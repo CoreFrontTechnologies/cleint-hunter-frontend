@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Client Hunter</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{--a:#7C3AED;--a2:#6D28D9;--al:#EDE9FE;--at:#4C1D95;--bg1:#fff;--bg2:#F8F7FF;--bg3:#F0EEFF;--t1:#0F0A1E;--t2:#4B5563;--t3:#9CA3AF;--bd:#E5E7EB;--bd2:#D1D5DB;--card:#fff;--sb:#FAFAFA;--ok:#059669;--okb:#ECFDF5;--wn:#D97706;--wnb:#FFFBEB;--er:#DC2626;--erb:#FEF2F2;--sh:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);--shl:0 8px 40px rgba(124,58,237,.12),0 2px 8px rgba(0,0,0,.08);--r:10px;--rs:7px;--rl:16px}
+[data-theme="dark"]{--bg1:#0C0918;--bg2:#130E24;--bg3:#1C1535;--t1:#F3F0FF;--t2:#A78BFA;--t3:#6D5FA6;--bd:#2D2050;--bd2:#3D2F6A;--card:#130E24;--sb:#0C0918;--al:#2D1F5E;--at:#C4B5FD;--okb:#064E3B;--wnb:#451A03;--erb:#450A0A;--sh:0 1px 3px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.3);--shl:0 8px 40px rgba(0,0,0,.6)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg2);color:var(--t1);min-height:100vh;transition:background .25s,color .25s}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:5px}::-webkit-scrollbar-thumb:hover{background:var(--a)}
+.app{display:flex;height:100vh;overflow:hidden}
+.sidebar{width:225px;background:var(--sb);border-right:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0;z-index:100;transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg1)}
+.page{flex:1;overflow-y:auto;display:none}.page.active{display:block;animation:fi .2s ease}
+.fp{display:none;flex-direction:column}.fp.active{display:flex;animation:fi .2s ease}
+.logo-area{padding:20px 18px 14px;border-bottom:1px solid var(--bd)}
+.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a),#A855F7);display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;box-shadow:0 4px 12px rgba(124,58,237,.35);flex-shrink:0}
+.logo-name{font-size:15px;font-weight:800;color:var(--t1);letter-spacing:-.4px}
+.logo-tag{font-size:10px;color:var(--t3)}
+.conn-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;background:var(--bg3);border:1px solid var(--bd);border-radius:20px}
+.conn-dot{width:7px;height:7px;border-radius:50%;transition:background .3s}
+.conn-txt{font-size:11px;color:var(--t3);font-weight:500}
+.nav-sec{font-size:10px;font-weight:700;color:var(--t3);padding:14px 18px 5px;letter-spacing:.1em;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:11px;padding:9px 18px;cursor:pointer;font-size:13px;color:var(--t2);border-left:3px solid transparent;transition:all .15s;user-select:none}
+.nav-item:hover{background:var(--bg3);color:var(--t1)}
+.nav-item.active{background:var(--al);color:var(--a);border-left-color:var(--a);font-weight:600}
+.nav-item i{width:18px;text-align:center;font-size:14px;flex-shrink:0}
+.nav-badge{margin-left:auto;background:var(--a);color:#fff;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700;min-width:20px;text-align:center;animation:popIn .3s ease}
+.nav-badge.red{background:var(--er)}
+.user-section{margin-top:auto;padding:14px 16px;border-top:1px solid var(--bd)}
+.user-card{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:var(--r);border:1px solid var(--bd)}
+.user-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--a),#A855F7);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(124,58,237,.3)}
+.user-name{font-size:13px;font-weight:700;color:var(--t1)}
+.user-role{font-size:11px;color:var(--t3)}
+.theme-btn{margin-left:auto;background:none;border:1px solid var(--bd);border-radius:8px;cursor:pointer;color:var(--t2);width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:14px;flex-shrink:0}
+.theme-btn:hover{background:var(--al);color:var(--a);border-color:var(--a)}
+.topbar{padding:13px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--bg1);gap:12px}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.menu-btn{display:none;background:none;border:1px solid var(--bd);border-radius:var(--rs);padding:7px 10px;cursor:pointer;color:var(--t2);font-size:15px}
+.page-title{font-size:16px;font-weight:700;color:var(--t1)}
+.topbar-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.scan-badge{display:none;align-items:center;gap:7px;font-size:12px;color:var(--a);background:var(--al);padding:6px 14px;border-radius:20px;border:1px solid var(--a);font-weight:600}
+.btn{padding:8px 16px;border-radius:var(--rs);font-size:13px;cursor:pointer;border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);transition:all .15s;font-weight:500;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.btn:hover{background:var(--bg3);transform:translateY(-1px)}.btn:active{transform:none}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary{background:linear-gradient(135deg,var(--a),#A855F7);color:#fff;border:none;box-shadow:0 4px 14px rgba(124,58,237,.3)}.btn-primary:hover{box-shadow:0 6px 20px rgba(124,58,237,.4);transform:translateY(-2px)}
+.btn-sm{padding:6px 14px;font-size:12px}.btn-ghost{background:transparent;border-color:transparent;color:var(--t2)}.btn-ghost:hover{background:var(--bg3);border-color:var(--bd)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:18px;box-shadow:var(--sh);transition:all .2s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a),#A855F7);opacity:0;transition:opacity .2s}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shl)}.stat-card:hover::before{opacity:1}
+.stat-icon-wrap{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:18px}
+.stat-label{font-size:11px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.stat-val{font-size:28px;font-weight:800;color:var(--t1);line-height:1;margin-bottom:5px}
+.stat-change{font-size:12px;font-weight:600}
+.score{font-size:11px;padding:3px 9px;border-radius:10px;font-weight:700;white-space:nowrap}
+.sc-h{background:var(--okb);color:var(--ok)}.sc-m{background:var(--wnb);color:var(--wn)}.sc-l{background:var(--erb);color:var(--er)}
+.src-tag{font-size:10px;padding:3px 9px;border-radius:10px;background:var(--bg3);color:var(--t3);border:1px solid var(--bd);white-space:nowrap;font-weight:500}
+.sbadge{font-size:10px;padding:3px 9px;border-radius:10px;font-weight:700;white-space:nowrap}
+.s-New{background:#EFF6FF;color:#1D4ED8}.s-Contacted{background:var(--wnb);color:var(--wn)}.s-Negotiating{background:var(--al);color:var(--a)}.s-Closed{background:var(--okb);color:var(--ok)}
+[data-theme="dark"] .s-New{background:#1E3A5F;color:#93C5FD}[data-theme="dark"] .s-Contacted{background:#451A03;color:#FCD34D}
+.av{border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:12px}
+.av-purple{background:#EDE9FE;color:#6D28D9}.av-blue{background:#DBEAFE;color:#1D4ED8}.av-green{background:#D1FAE5;color:#065F46}.av-orange{background:#FEF3C7;color:#92400E}.av-red{background:#FEE2E2;color:#991B1B}.av-pink{background:#FCE7F3;color:#9D174D}.av-teal{background:#CCFBF1;color:#0F766E}
+[data-theme="dark"] .av-purple{background:#2D1F5E;color:#C4B5FD}[data-theme="dark"] .av-blue{background:#1E3A5F;color:#93C5FD}[data-theme="dark"] .av-green{background:#064E3B;color:#6EE7B7}[data-theme="dark"] .av-orange{background:#451A03;color:#FCD34D}[data-theme="dark"] .av-red{background:#450A0A;color:#FCA5A5}[data-theme="dark"] .av-pink{background:#500724;color:#F9A8D4}[data-theme="dark"] .av-teal{background:#134E4A;color:#5EEAD4}
+.lead-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;cursor:pointer;transition:all .15s;background:var(--card)}
+.lead-row:hover{border-color:var(--a);box-shadow:0 4px 16px rgba(124,58,237,.1);transform:translateX(3px)}
+.lead-row.selected{border-color:var(--a);background:var(--al)}
+.lead-name{font-size:13px;font-weight:700;color:var(--t1)}.lead-desc{font-size:12px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.lead-meta{display:flex;align-items:center;gap:7px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.pill{padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--bd2);background:var(--bg2);color:var(--t2);user-select:none;transition:all .15s;font-weight:500}
+.pill:hover{border-color:var(--a);color:var(--a)}.pill.active{background:var(--al);color:var(--a);border-color:var(--a);font-weight:700}
+.search-wrap{position:relative;flex:1;min-width:200px}
+.search-wrap input{width:100%;padding:9px 14px 9px 38px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;transition:all .15s;font-family:inherit}
+.search-wrap input:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px rgba(124,58,237,.12);background:var(--bg1)}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:13px;pointer-events:none}
+.empty{text-align:center;padding:60px 24px;color:var(--t3);animation:fi .3s ease}
+.empty-icon{font-size:52px;margin-bottom:18px;opacity:.4}
+.empty h3{font-size:17px;font-weight:700;color:var(--t2);margin-bottom:8px}
+.empty p{font-size:13px;line-height:1.7;max-width:300px;margin:0 auto}
+.kanban-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;height:100%;overflow:hidden}
+.kanban-col{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.kanban-col-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.kanban-col-name{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:7px}
+.kanban-count{font-size:11px;padding:2px 9px;border-radius:10px;background:var(--bg1);border:1px solid var(--bd);color:var(--t3);font-weight:700}
+.kcard{background:var(--card);border:1px solid var(--bd);border-radius:var(--rs);padding:13px;cursor:grab;transition:all .15s;animation:fi .2s ease}
+.kcard:hover{border-color:var(--a);box-shadow:0 4px 16px rgba(124,58,237,.12);transform:translateY(-2px)}
+.kcard-name{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kcard-desc{font-size:11px;color:var(--t3);margin-bottom:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kcard-budget{font-size:13px;font-weight:800;color:var(--a);margin-top:8px}
+.drop-zone{text-align:center;padding:14px;border:2px dashed var(--bd2);border-radius:var(--rs);color:var(--t3);font-size:12px;margin-top:4px;transition:all .2s}
+.drop-zone.over{border-color:var(--a);background:var(--al);color:var(--a)}
+.detail-panel{width:295px;border-left:1px solid var(--bd);padding:22px;overflow-y:auto;flex-shrink:0;background:var(--bg1);animation:slideL .2s ease}
+.det-field{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bd);font-size:13px;gap:12px}
+.det-key{color:var(--t3);font-weight:600;flex-shrink:0;font-size:12px}.det-val{color:var(--t1);font-weight:700;text-align:right;word-break:break-all;font-size:12px}
+.composer{border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;background:var(--card);box-shadow:var(--sh)}
+.comp-row{display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid var(--bd)}
+.comp-lbl{font-size:12px;color:var(--t3);width:54px;flex-shrink:0;font-weight:700}
+.comp-input{flex:1;border:none;background:transparent;font-size:13px;color:var(--t1);outline:none;font-family:inherit}
+.comp-ta{width:100%;border:none;background:transparent;font-size:13px;color:var(--t1);outline:none;resize:none;line-height:1.8;min-height:210px;padding:16px;font-family:inherit}
+.comp-footer{padding:12px 16px;border-top:1px solid var(--bd);display:flex;gap:8px;flex-wrap:wrap;background:var(--bg2)}
+.ai-banner{background:linear-gradient(135deg,var(--al),var(--bg3));border:1px solid var(--a);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start}
+.ai-text{font-size:13px;color:var(--at);line-height:1.6}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bar-lbl{font-size:12px;color:var(--t3);width:110px;text-align:right;flex-shrink:0;font-weight:500}
+.bar-track{flex:1;background:var(--bg3);border-radius:6px;height:22px;overflow:hidden}
+.bar-fill{height:100%;display:flex;align-items:center;padding:0 10px;border-radius:6px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.bar-fill span{font-size:10px;color:#fff;font-weight:800}
+.chart-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:22px;box-shadow:var(--sh);transition:all .2s}
+.chart-card:hover{box-shadow:var(--shl)}
+.chart-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.chart-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tabs{display:flex;border-bottom:1px solid var(--bd);padding:0 22px;flex-shrink:0;background:var(--bg1)}
+.tab{padding:13px 4px;margin-right:24px;font-size:13px;cursor:pointer;color:var(--t3);border-bottom:2px solid transparent;font-weight:600;transition:all .15s;display:flex;align-items:center;gap:7px}
+.tab:hover{color:var(--t1)}.tab.active{color:var(--a);border-bottom-color:var(--a)}
+.seq-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.seq-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;border:2px solid}
+.seq-done{background:var(--okb);border-color:var(--ok);color:var(--ok)}.seq-todo{background:var(--bg3);border-color:var(--bd2);color:var(--t3)}
+.scanner-row{display:flex;align-items:center;gap:12px;padding:11px 16px;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;transition:all .15s}
+.scanner-row:hover{border-color:var(--a);background:var(--al)}
+.sc-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.settings-block{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:20px;box-shadow:var(--sh)}
+.set-row{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px solid var(--bd)}.set-row:last-child{border-bottom:none}
+.set-lbl{font-size:12px;color:var(--t3);width:145px;flex-shrink:0;font-weight:700}
+.set-inp{flex:1;border:none;background:transparent;font-size:13px;color:var(--t1);outline:none;font-family:inherit}
+.api-box{background:linear-gradient(135deg,var(--al),var(--bg3));border:1px solid var(--a);border-radius:var(--r);padding:22px;margin-bottom:24px}
+.api-box h3{font-size:15px;font-weight:800;color:var(--a);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.api-box p{font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6}
+.api-inp-row{display:flex;gap:8px}
+.api-inp{flex:1;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg1);color:var(--t1);font-size:13px;font-family:inherit}
+.api-inp:focus{outline:none;border-color:var(--a)}
+.api-status{font-size:12px;margin-top:12px;padding:10px 14px;border-radius:var(--rs);background:var(--bg1);border:1px solid var(--bd);color:var(--t3);display:flex;align-items:center;gap:8px}
+.key-tbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
+.key-tbl th,.key-tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd)}
+.key-tbl th{color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--bg2)}
+.key-tbl tr:last-child td{border-bottom:none}
+.kbadge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700}
+.kbf{background:var(--okb);color:var(--ok)}.kbn{background:var(--wnb);color:var(--wn)}
+.hcard{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-bottom:10px;transition:all .15s;animation:fi .2s ease}
+.hcard:hover{border-color:var(--a);box-shadow:var(--sh)}
+.htag{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:700}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;backdrop-filter:blur(2px)}
+.toast{position:fixed;bottom:24px;right:24px;padding:13px 20px;border-radius:var(--r);font-size:13px;font-weight:700;z-index:9999;box-shadow:var(--shl);max-width:340px;display:flex;align-items:center;gap:10px;animation:slideU .3s cubic-bezier(.4,0,.2,1)}
+.toast-success{background:linear-gradient(135deg,var(--a),#A855F7);color:#fff}
+.toast-error{background:var(--er);color:#fff}
+.toast-info{background:var(--bg1);color:var(--t1);border:1px solid var(--bd)}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--bd2);border-top-color:var(--a);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.sec-title{font-size:14px;font-weight:800;color:var(--t1);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.cpad{padding:24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes slideL{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.pulse-dot{animation:pulse 1.4s infinite}
+@media(max-width:900px){
+  .sidebar{position:fixed;top:0;left:0;height:100vh;transform:translateX(-100%);box-shadow:var(--shl)}
+  .sidebar.open{transform:translateX(0)}.overlay.open{display:block}
+  .menu-btn{display:flex}.stat-grid{grid-template-columns:repeat(2,1fr)}
+  .chart-2{grid-template-columns:1fr}.kanban-wrap{grid-template-columns:1fr 1fr;overflow-y:auto;height:auto}
+  .detail-panel{position:fixed;bottom:0;left:0;right:0;width:100%;max-height:75vh;border-radius:var(--rl) var(--rl) 0 0;border-top:2px solid var(--a);z-index:150}
+  .two-col{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .stat-grid{grid-template-columns:1fr 1fr}.kanban-wrap{grid-template-columns:1fr}
+  .lead-meta .src-tag,.lead-meta .sbadge{display:none}.cpad{padding:16px}
+}
+</style>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+<div class="app">
+  <div class="sidebar" id="sidebar">
+    <div class="logo-area">
+      <div class="logo-row">
+        <div class="logo-icon"><i class="fa-solid fa-crosshairs"></i></div>
+        <div><div class="logo-name">Client Hunter</div><div class="logo-tag">Automated Lead Generation</div></div>
+      </div>
+      <div class="conn-badge">
+        <div class="conn-dot" id="connDot" style="background:#D97706"></div>
+        <span class="conn-txt" id="connLabel">Not connected</span>
+      </div>
+    </div>
+    <div style="padding:8px 0;overflow-y:auto;flex:1">
+      <div class="nav-item active" onclick="nav('Dashboard')"><i class="fa-solid fa-house"></i>Dashboard</div>
+      <div class="nav-item" onclick="nav('Leads')"><i class="fa-solid fa-crosshairs"></i>Lead Finder<span class="nav-badge" id="badge-new">0</span></div>
+      <div class="nav-sec">Workflow</div>
+      <div class="nav-item" onclick="nav('CRM')"><i class="fa-solid fa-table-columns"></i>CRM Pipeline</div>
+      <div class="nav-item" onclick="nav('Outreach')"><i class="fa-solid fa-paper-plane"></i>Outreach<span class="nav-badge red" id="badge-outh">0</span></div>
+      <div class="nav-sec">Insights</div>
+      <div class="nav-item" onclick="nav('Analytics')"><i class="fa-solid fa-chart-line"></i>Analytics</div>
+      <div class="nav-item" onclick="nav('Settings')"><i class="fa-solid fa-gear"></i>Settings</div>
+    </div>
+    <div class="user-section">
+      <div class="user-card">
+        <div class="user-av">TW</div>
+        <div style="flex:1;min-width:0"><div class="user-name">The Artificial Worker</div><div class="user-role">Pro Plan · Active</div></div>
+        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="openSidebar()"><i class="fa-solid fa-bars"></i></button>
+        <span class="page-title" id="pageTitle">Dashboard</span>
+      </div>
+      <div class="topbar-right">
+        <div class="scan-badge" id="scanBadge"><span class="spinner"></span><span id="scanLabel">Scanning…</span></div>
+        <button class="btn btn-sm" onclick="triggerScan('all')"><i class="fa-solid fa-rotate"></i>Scan All</button>
+        <button class="btn btn-primary btn-sm" onclick="nav('Outreach')"><i class="fa-solid fa-plus"></i>Outreach</button>
+      </div>
+    </div>
+
+    <div class="page active cpad" id="page-Dashboard">
+      <div class="stat-grid" id="dashStats"></div>
+      <div class="two-col">
+        <div><div class="sec-title"><i class="fa-solid fa-fire" style="color:#EF4444"></i>Recent Leads</div><div id="dashLeads"></div><button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px;justify-content:center" onclick="nav('Leads')">View all <i class="fa-solid fa-arrow-right"></i></button></div>
+        <div><div class="sec-title"><i class="fa-solid fa-satellite-dish" style="color:var(--a)"></i>Live Scanners</div><div id="dashScanners"></div><div style="margin-top:22px"><div class="sec-title"><i class="fa-solid fa-chart-pie" style="color:var(--wn)"></i>Sources</div><div id="dashSources"></div></div></div>
+      </div>
+    </div>
+
+    <div class="fp" id="page-Leads">
+      <div style="padding:18px 20px 0">
+        <div class="filter-row">
+          <div class="search-wrap"><span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span><input id="leadSearch" placeholder="Search leads…" oninput="renderLeads()"></div>
+          <button class="btn btn-primary btn-sm" onclick="triggerScan('all')"><i class="fa-solid fa-wand-magic-sparkles"></i>Find Leads</button>
+        </div>
+        <div class="filter-row" id="srcFilters"></div>
+      </div>
+      <div style="display:flex;flex:1;overflow:hidden">
+        <div style="flex:1;overflow-y:auto;padding:0 20px 20px" id="leadList"></div>
+        <div class="detail-panel" id="detailPanel" style="display:none"></div>
+      </div>
+    </div>
+
+    <div class="page" id="page-CRM" style="height:100%;overflow:hidden"><div class="kanban-wrap" id="kanban"></div></div>
+
+    <div class="fp" id="page-Outreach">
+      <div class="tabs">
+        <div class="tab active" id="tab-compose" onclick="switchTab('compose')"><i class="fa-solid fa-pen-to-square"></i>Compose</div>
+        <div class="tab" id="tab-history" onclick="switchTab('history')"><i class="fa-solid fa-clock-rotate-left"></i>History</div>
+      </div>
+      <div style="display:flex;flex:1;overflow:hidden">
+        <div style="flex:1;overflow-y:auto;padding:22px;border-right:1px solid var(--bd)"><div id="compose-pane"></div><div id="history-pane" style="display:none"></div></div>
+        <div style="width:275px;padding:22px;overflow-y:auto;flex-shrink:0" id="seq-panel"></div>
+      </div>
+    </div>
+
+    <div class="page cpad" id="page-Analytics"><div class="stat-grid" id="analyticsStats"></div><div class="chart-2" id="analyticsCharts"></div></div>
+
+    <div class="page cpad" id="page-Settings" style="max-width:620px">
+      <div class="api-box">
+        <h3><i class="fa-solid fa-plug"></i>Connect Your Backend</h3>
+        <p>Paste your Railway URL to enable real lead scanning, AI emails, and Gmail sending.</p>
+        <div class="api-inp-row"><input class="api-inp" id="apiUrlInput" placeholder="https://your-app.up.railway.app"><button class="btn btn-primary" onclick="saveApiUrl()"><i class="fa-solid fa-link"></i>Connect</button></div>
+        <div class="api-status" id="apiStatus"><i class="fa-solid fa-circle-info"></i>Not connected — demo mode</div>
+      </div>
+      <div class="sec-title"><i class="fa-solid fa-user-circle"></i>Your Profile</div>
+      <div class="settings-block">
+        <div class="set-row"><span class="set-lbl">Full name</span><input class="set-inp" id="sName" value="The Artificial Worker"></div>
+        <div class="set-row"><span class="set-lbl">Business / Brand</span><input class="set-inp" id="sBrand" value="The Artificial Worker Agency"></div>
+        <div class="set-row"><span class="set-lbl">Skills</span><input class="set-inp" id="sSkills" value="web design, UI/UX and development"></div>
+        <div class="set-row"><span class="set-lbl">Portfolio URL</span><input class="set-inp" id="sPortfolio" value="theartificialworker.com"></div>
+        <div class="set-row"><span class="set-lbl">Your email</span><input class="set-inp" id="sEmail" value="hello@theartificialworker.com"></div>
+        <div class="set-row"><span class="set-lbl">Target cities</span><input class="set-inp" id="sCities" value="Lagos Nigeria, Abuja Nigeria, London UK, New York USA"></div>
+        <div class="set-row"><span class="set-lbl">Your freelance skill</span>
+          <select class="set-inp" id="sSkillType" onchange="onSkillChange(this.value)" style="cursor:pointer">
+            <option value="web_design">🖥️ Web Design & Development</option>
+            <option value="graphic_design">🎨 Graphic Design & Branding</option>
+            <option value="video_editing">🎬 Video Editing & Production</option>
+            <option value="copywriting">✍️ Copywriting & Content Writing</option>
+            <option value="social_media">📱 Social Media Management</option>
+            <option value="seo_marketing">📈 SEO & Digital Marketing</option>
+            <option value="mobile_dev">📲 Mobile App Development</option>
+            <option value="photography">📷 Photography & Videography</option>
+            <option value="virtual_assistant">🗂️ Virtual Assistant</option>
+            <option value="other">⚡ Other (uses your skills field)</option>
+          </select>
+        </div>
+        <div id="skillPreview" style="padding:10px 18px 14px;background:var(--bg3);border-top:1px solid var(--bd)">
+          <div style="font-size:11px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px"><i class="fa-solid fa-eye"></i> What will change with this skill</div>
+          <div id="skillPreviewText" style="font-size:12px;color:var(--t2);line-height:1.7"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="margin-bottom:28px" onclick="saveProfile()"><i class="fa-solid fa-floppy-disk"></i>Save Profile</button>
+      <div class="sec-title"><i class="fa-solid fa-key"></i>API Keys Guide</div>
+      <div class="settings-block">
+        <table class="key-tbl">
+          <tr><th>Source</th><th>Key Required?</th><th>Where to get it</th></tr>
+          <tr><td><i class="fa-solid fa-briefcase"></i> Job Boards (RemoteOK, WWR)</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
+          <tr><td><i class="fa-brands fa-reddit"></i> Reddit</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
+          <tr><td><i class="fa-solid fa-globe"></i> Domain Tracker</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
+          <tr><td><i class="fa-brands fa-google"></i> Google Maps</td><td><span class="kbadge kbn">GOOGLE_MAPS_API_KEY</span></td><td>console.cloud.google.com</td></tr>
+          <tr><td><i class="fa-brands fa-twitter"></i> Twitter/X</td><td><span class="kbadge kbn">TWITTER_BEARER_TOKEN</span></td><td>developer.twitter.com</td></tr>
+          <tr><td><i class="fa-solid fa-magnifying-glass"></i> Google Search</td><td><span class="kbadge kbn">GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX</span></td><td>programmablesearchengine.google.com</td></tr>
+          <tr><td><i class="fa-solid fa-robot"></i> AI Email (Gemini)</td><td><span class="kbadge kbn">GEMINI_API_KEY</span></td><td>aistudio.google.com (FREE)</td></tr>
+          <tr><td><i class="fa-solid fa-envelope"></i> Gmail</td><td><span class="kbadge kbn">EMAIL_USER + EMAIL_PASS</span></td><td>Gmail App Password</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var API_BASE=localStorage.getItem('ch_api')||'';
+var userName=localStorage.getItem('ch_name')||'The Artificial Worker';
+var userBrand=localStorage.getItem('ch_brand')||'The Artificial Worker Agency';
+var userSkills=localStorage.getItem('ch_skills')||'web design, UI/UX and development';
+var userPortfolio=localStorage.getItem('ch_portfolio')||'theartificialworker.com';
+var leads=[],outreach=[],selectedLeadId=null,srcFilter='All';
+var currentTab='compose',currentTone='professional',composeLeadId=null;
+var genSubject='',genBody='',draggingId=null,currentPage='Dashboard';
+var avcs=['purple','blue','green','orange','red','pink','teal'];
+var srcColors={'Upwork':'#059669','RemoteOK':'#059669','WeWorkRemotely':'#4F46E5','Freelancer.com':'#29B2FE','Google Maps':'#1D4ED8','Google Search':'#EA4335','Twitter':'#1DA1F2','Reddit':'#FF4500','Domain Tracker':'#7C3AED','LinkedIn':'#0A66C2'};
+
+// Theme
+function toggleTheme(){
+  var h=document.documentElement,d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeBtn').innerHTML=d?'<i class="fa-solid fa-moon"></i>':'<i class="fa-solid fa-sun"></i>';
+  localStorage.setItem('ch_theme',d?'light':'dark');
+}
+(function(){var t=localStorage.getItem('ch_theme');if(t){document.documentElement.setAttribute('data-theme',t);window.addEventListener('load',function(){var b=document.getElementById('themeBtn');if(b)b.innerHTML=t==='dark'?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';});}})();
+
+function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('open');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
+
+function nav(name){
+  closeSidebar();
+  document.querySelectorAll('.page,.fp').forEach(function(p){p.classList.remove('active');p.style.display='none';});
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  var pg=document.getElementById('page-'+name);if(!pg)return;
+  pg.classList.add('active');pg.style.display=pg.classList.contains('fp')?'flex':'block';
+  document.querySelectorAll('.nav-item').forEach(function(n){if(n.getAttribute('onclick')&&n.getAttribute('onclick').indexOf("'"+name+"'")>-1)n.classList.add('active');});
+  var titles={Dashboard:'Dashboard',Leads:'Lead Finder',CRM:'CRM Pipeline',Outreach:'Outreach',Analytics:'Analytics',Settings:'Settings'};
+  document.getElementById('pageTitle').textContent=titles[name]||name;
+  currentPage=name;
+  if(name==='Dashboard')renderDashboard();
+  if(name==='Leads')renderLeads();
+  if(name==='CRM')renderKanban();
+  if(name==='Outreach')renderOutreach();
+  if(name==='Analytics')renderAnalytics();
+  if(name==='Settings')renderSettings();
+}
+
+function mkAv(init,color,size){size=size||36;return'<div class="av av-'+color+'" style="width:'+size+'px;height:'+size+'px;font-size:'+Math.round(size*.32)+'px">'+init+'</div>';}
+function mkScore(v){var c=v>=85?'sc-h':v>=70?'sc-m':'sc-l';return'<span class="score '+c+'">'+v+'</span>';}
+function mkTag(v){return'<span class="src-tag">'+v+'</span>';}
+function mkStatus(v){return'<span class="sbadge s-'+v+'">'+v+'</span>';}
+function initials(n){return(n||'?').split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase()||'??';}
+function getAvc(id){return avcs[id%avcs.length];}
+function filteredLeads(){
+  var q=(document.getElementById('leadSearch')||{}).value||'';
+  return leads.filter(function(l){
+    if(srcFilter!=='All'&&l.src!==srcFilter)return false;
+    if(q&&l.name.toLowerCase().indexOf(q.toLowerCase())<0&&(l.desc||'').toLowerCase().indexOf(q.toLowerCase())<0)return false;
+    return true;
+  });
+}
+function showToast(msg,type){
+  type=type||'success';
+  var t=document.createElement('div');t.className='toast toast-'+type;
+  var icons={success:'<i class="fa-solid fa-circle-check"></i>',error:'<i class="fa-solid fa-circle-xmark"></i>',info:'<i class="fa-solid fa-circle-info"></i>'};
+  t.innerHTML=(icons[type]||'')+' '+msg;
+  document.body.appendChild(t);
+  setTimeout(function(){t.remove();},3500);
+}
+function updateBadges(){
+  document.getElementById('badge-new').textContent=leads.filter(function(l){return l.status==='New';}).length;
+  document.getElementById('badge-outh').textContent=outreach.filter(function(o){return!o.repliedAt;}).length;
+}
+
+function renderDashboard(){
+  var newC=leads.filter(function(l){return l.status==='New';}).length;
+  var cont=leads.filter(function(l){return l.status==='Contacted';}).length;
+  var closed=leads.filter(function(l){return l.status==='Closed';}).length;
+  var pipe=leads.reduce(function(s,l){return s+parseInt((l.budget||'0').replace(/\D/g,'')||0);},0);
+  document.getElementById('dashStats').innerHTML=[
+    {icon:'fa-crosshairs',col:'#7C3AED',bg:'#EDE9FE',lbl:'New Leads',v:newC,ch:'Ready to contact'},
+    {icon:'fa-paper-plane',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Contacted',v:cont,ch:outreach.length+' emails sent'},
+    {icon:'fa-handshake',col:'#059669',bg:'#D1FAE5',lbl:'Deals Closed',v:closed,ch:'This month'},
+    {icon:'fa-coins',col:'#D97706',bg:'#FEF3C7',lbl:'Pipeline Value',v:'$'+pipe.toLocaleString(),ch:'Estimated'},
+  ].map(function(s){return'<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div><div class="stat-change" style="color:'+s.col+'">'+s.ch+'</div></div>';}).join('');
+
+  document.getElementById('dashLeads').innerHTML=leads.length===0
+    ?'<div class="empty" style="padding:30px 0"><div class="empty-icon"><i class="fa-solid fa-crosshairs"></i></div><h3>No leads yet</h3><p>Click Scan All to find clients automatically</p></div>'
+    :leads.slice(0,5).map(function(l){return'<div class="lead-row" onclick="nav(\'Leads\')">'+mkAv(initials(l.name),getAvc(l.id))+'<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div>'+mkScore(l.score)+'</div>';}).join('');
+
+  var scanners=[
+    {icon:'fa-briefcase',col:'#059669',bg:'#D1FAE5',name:'Job Boards',desc:'RemoteOK, WeWorkRemotely — searching for '+getSkillLabel(),s:'jobs'},
+    {icon:'fa-map-location-dot',col:'#1D4ED8',bg:'#DBEAFE',name:'Google Maps',desc:'Local businesses with no website',s:'maps'},
+    {icon:'fa-magnifying-glass',col:'#EA4335',bg:'#FEE2E2',name:'Google Search',desc:'Find businesses looking for designers',s:'google'},
+    {icon:'fa-brands fa-twitter',col:'#1DA1F2',bg:'#E0F2FE',name:'Twitter/X',desc:'Real-time buying intent signals',s:'social'},
+    {icon:'fa-brands fa-reddit',col:'#FF4500',bg:'#FEF3C7',name:'Reddit',desc:'r/Entrepreneur, r/smallbusiness — FREE',s:'social'},
+    {icon:'fa-globe',col:'#7C3AED',bg:'#EDE9FE',name:'Domain Tracker',desc:'Expiring domains — FREE',s:'domains'},
+  ];
+  document.getElementById('dashScanners').innerHTML=scanners.map(function(s){
+    return'<div class="scanner-row"><div class="sc-icon" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--t1)">'+s.name+'</div><div style="font-size:11px;color:var(--t3);margin-top:1px">'+s.desc+'</div></div><button class="btn btn-sm" onclick="triggerScan(\''+s.s+'\')"><i class="fa-solid fa-play"></i></button></div>';
+  }).join('');
+
+  var srcs=leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});
+  var mx=Math.max.apply(null,Object.values(srcs).concat([1]));
+  document.getElementById('dashSources').innerHTML=Object.keys(srcs).length===0
+    ?'<p style="font-size:13px;color:var(--t3)"><i class="fa-solid fa-chart-simple"></i> Run a scan to see sources</p>'
+    :Object.entries(srcs).map(function(e){return'<div class="bar-row"><span class="bar-lbl">'+e[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.round((e[1]/mx)*100)+'%;background:'+(srcColors[e[0]]||'var(--a)')+'"><span>'+e[1]+'</span></div></div></div>';}).join('');
+}
+
+function renderLeads(){
+  var allSrcs=['All'].concat([...new Set(leads.map(function(l){return l.src;}))]);
+  document.getElementById('srcFilters').innerHTML=allSrcs.slice(0,7).map(function(s){return'<div class="pill'+(srcFilter===s?' active':'')+'" onclick="setSrc(\''+s+'\')">'+s+'</div>';}).join('')+'<span style="margin-left:auto;font-size:12px;color:var(--t3);align-self:center">'+filteredLeads().length+' leads</span>';
+  var fil=filteredLeads();
+  document.getElementById('leadList').innerHTML=fil.length===0
+    ?'<div class="empty"><div class="empty-icon"><i class="fa-solid fa-'+(leads.length===0?'crosshairs':'filter')+'"></i></div><h3>'+(leads.length===0?'No leads yet':'No results')+'</h3><p>'+(leads.length===0?'Click "Find Leads" to start scanning automatically':'Try different search or filter')+'</p>'+(leads.length===0?'<button class="btn btn-primary" style="margin-top:18px" onclick="triggerScan(\'all\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Find Leads Now</button>':'')+'</div>'
+    :fil.map(function(l){return'<div class="lead-row'+(selectedLeadId===l.id?' selected':'')+'" onclick="selectLead('+l.id+')">'+mkAv(initials(l.name),getAvc(l.id))+'<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div><div class="lead-meta"><span style="font-size:12px;color:var(--t3);font-weight:700">'+l.budget+'</span>'+mkScore(l.score)+mkTag(l.src)+mkStatus(l.status)+'</div></div>';}).join('');
+  var panel=document.getElementById('detailPanel');
+  if(selectedLeadId){panel.style.display='';renderDetail(leads.find(function(l){return l.id===selectedLeadId;}));}
+  else panel.style.display='none';
+}
+
+function setSrc(s){srcFilter=s;renderLeads();}
+function selectLead(id){selectedLeadId=selectedLeadId===id?null:id;renderLeads();}
+
+function renderDetail(l){
+  if(!l)return;
+  document.getElementById('detailPanel').innerHTML=
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">'+mkAv(initials(l.name),getAvc(l.id),44)+'<div><div style="font-size:15px;font-weight:800;color:var(--t1)">'+l.name+'</div><div style="font-size:12px;color:var(--t3);margin-top:3px">'+(l.ind||'Unknown')+'</div></div></div>'+
+    '<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+l.desc+'</p>'+
+    '<div style="margin-bottom:18px">'+
+    [['<i class="fa-solid fa-satellite-dish"></i> Source',l.src],['<i class="fa-solid fa-coins"></i> Budget',l.budget],['<i class="fa-solid fa-star"></i> Score',l.score],['<i class="fa-solid fa-globe"></i> Website',l.web||'—'],['<i class="fa-solid fa-envelope"></i> Email',l.email||'—']].map(function(f){return'<div class="det-field"><span class="det-key">'+f[0]+'</span><span class="det-val">'+f[1]+'</span></div>';}).join('')+
+    '</div>'+
+    (l.notes?'<div style="font-size:12px;color:var(--t2);background:var(--bg3);border-radius:var(--rs);padding:10px;margin-bottom:14px;line-height:1.6;border:1px solid var(--bd)">'+l.notes+'</div>':'')+
+    '<div style="font-size:12px;color:var(--t3);margin-bottom:6px;font-weight:700"><i class="fa-solid fa-arrows-rotate"></i> Update Status</div>'+
+    '<select style="width:100%;padding:9px 12px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit;margin-bottom:14px" onchange="updateStatus('+l.id+',this.value)">'+
+    ['New','Contacted','Negotiating','Closed'].map(function(s){return'<option'+(s===l.status?' selected':'')+'>'+s+'</option>';}).join('')+'</select>'+
+    '<button class="btn btn-primary" style="width:100%;justify-content:center" onclick="composeLeadId='+l.id+';nav(\'Outreach\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Write AI Email</button>'+
+    '<button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;color:var(--er)" onclick="deleteLead('+l.id+')"><i class="fa-solid fa-trash"></i> Remove Lead</button>';
+}
+
+function updateStatus(id,st){
+  leads=leads.map(function(l){return l.id===id?Object.assign({},l,{status:st}):l;});
+  updateBadges();renderDetail(leads.find(function(l){return l.id===id;}));
+  if(API_BASE)fetch(API_BASE+'/api/leads/'+id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:st})}).catch(function(){});
+}
+function deleteLead(id){
+  leads=leads.filter(function(l){return l.id!==id;});selectedLeadId=null;
+  document.getElementById('detailPanel').style.display='none';
+  updateBadges();renderLeads();
+  if(API_BASE)fetch(API_BASE+'/api/leads/'+id,{method:'DELETE'}).catch(function(){});
+  showToast('Lead removed','info');
+}
+
+async function triggerScan(src){
+  var badge=document.getElementById('scanBadge'),lbl=document.getElementById('scanLabel');
+  var labels={jobs:'Scanning job boards…',maps:'Scanning Google Maps…',google:'Searching Google…',social:'Scanning Twitter & Reddit…',domains:'Checking domains…',all:'Running all scanners…'};
+  badge.style.display='flex';lbl.textContent=labels[src]||'Scanning…';
+  if(API_BASE){
+    try{
+      var res=await fetch(API_BASE+'/api/leads/scan/'+src,{method:'POST',headers:{'Content-Type':'application/json'}});
+      var data=await res.json();
+      await fetchLeads();
+      badge.style.display='none';
+      var saved=data.totalSaved||data.saved||0;
+      showToast(saved>0?'Found '+saved+' new lead'+(saved>1?'s':'')+'!':'Scan complete — no new leads this time');
+      if(currentPage==='Dashboard')renderDashboard();
+      if(currentPage==='Leads')renderLeads();
+      updateBadges();return;
+    }catch(e){console.error('Scan:',e);}
+  }
+  await new Promise(function(r){setTimeout(r,2200);});
+  var srcMap={jobs:'RemoteOK',maps:'Google Maps',google:'Google Search',social:'Twitter',domains:'Domain Tracker',all:'Upwork'};
+  var names=['Bright Digital Agency','Lagos Tech Solutions','Swift Marketing Co','Greenfield Law Firm','Nova Restaurant Group','Apex Dental Care','Prime Consulting Ltd','Metro Real Estate','Coastal Realty Group','Sunrise Bakery'];
+  var inds=['Agency','Legal','Healthcare','Restaurant','Retail','Consulting','Real Estate','Technology'];
+  var name=names[Math.floor(Math.random()*names.length)];
+  var ind=inds[Math.floor(Math.random()*inds.length)];
+  leads=[{id:Date.now(),name:name,desc:'Potential client discovered via '+( srcMap[src]||src)+' — needs web presence improvement',src:srcMap[src]||src,ind:ind,budget:'$'+(Math.floor(Math.random()*30+10)*100),score:65+Math.round(Math.random()*30),status:'New',email:'',web:'',notes:''}].concat(leads);
+  badge.style.display='none';updateBadges();
+  if(currentPage==='Dashboard')renderDashboard();
+  if(currentPage==='Leads')renderLeads();
+  showToast('Found 1 new lead: '+name);
+}
+
+async function fetchLeads(){
+  if(!API_BASE)return;
+  try{
+    var res=await fetch(API_BASE+'/api/leads?limit=200');
+    var data=await res.json();
+    if(Array.isArray(data.leads)){
+      leads=data.leads.map(function(l){return{id:l.id,name:l.name,desc:l.description,src:l.source,ind:l.industry,budget:l.budget_estimate||'TBD',score:l.score,status:l.status,email:l.email||'',web:l.website||'',notes:l.notes||''};});
+      updateBadges();
+    }
+  }catch(e){}
+}
+
+function renderKanban(){
+  var cols=['New','Contacted','Negotiating','Closed'];
+  var cc={New:{col:'#1D4ED8',icon:'fa-star'},Contacted:{col:'#D97706',icon:'fa-envelope-open'},Negotiating:{col:'#7C3AED',icon:'fa-handshake'},Closed:{col:'#059669',icon:'fa-circle-check'}};
+  document.getElementById('kanban').innerHTML=cols.map(function(col){
+    var cl=leads.filter(function(l){return l.status===col;});
+    return'<div class="kanban-col" ondragover="event.preventDefault();this.querySelector(\'.drop-zone\').classList.add(\'over\')" ondragleave="this.querySelector(\'.drop-zone\').classList.remove(\'over\')" ondrop="dropLead(\''+col+'\',this)">'+
+      '<div class="kanban-col-hdr"><span class="kanban-col-name" style="color:'+cc[col].col+'"><i class="fa-solid '+cc[col].icon+'"></i>'+col+'</span><span class="kanban-count">'+cl.length+'</span></div>'+
+      cl.map(function(l){return'<div class="kcard" draggable="true" ondragstart="draggingId='+l.id+'">'+
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'+mkAv(initials(l.name),getAvc(l.id),28)+'<div class="kcard-name">'+l.name+'</div></div>'+
+        '<div class="kcard-desc">'+l.desc+'</div>'+
+        '<div style="display:flex;justify-content:space-between;align-items:center">'+mkTag(l.src)+mkScore(l.score)+'</div>'+
+        '<div class="kcard-budget">'+l.budget+'</div></div>';}).join('')+
+      '<div class="drop-zone"><i class="fa-solid fa-arrow-down"></i> Drop here</div></div>';
+  }).join('');
+}
+
+function dropLead(col,colEl){
+  colEl.querySelector('.drop-zone').classList.remove('over');
+  if(!draggingId)return;
+  var did=draggingId;
+  leads=leads.map(function(l){return l.id===did?Object.assign({},l,{status:col}):l;});
+  draggingId=null;updateBadges();renderKanban();
+  if(API_BASE)fetch(API_BASE+'/api/leads/'+did,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:col})}).catch(function(){});
+}
+
+function switchTab(t){
+  currentTab=t;
+  ['compose','history'].forEach(function(x){document.getElementById('tab-'+x).classList.toggle('active',x===t);document.getElementById(x+'-pane').style.display=x===t?'':'none';});
+}
+function setTone(t){
+  currentTone=t;
+  ['professional','friendly','bold'].forEach(function(x){var el=document.getElementById('tone-'+x);if(el)el.classList.toggle('active',x===t);});
+}
+
+function renderOutreach(){
+  var lead=leads.find(function(l){return l.id===composeLeadId;})||null;
+  document.getElementById('compose-pane').innerHTML=
+    '<div style="margin-bottom:18px"><div style="font-size:12px;color:var(--t3);margin-bottom:7px;font-weight:700"><i class="fa-solid fa-crosshairs"></i> Select lead</div>'+
+    '<select style="width:100%;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit" onchange="composeLeadId=parseInt(this.value)||null;genSubject=\'\';genBody=\'\';renderOutreach()">'+
+    '<option value="">— Select a lead —</option>'+
+    leads.map(function(l){return'<option value="'+l.id+'"'+(l.id===composeLeadId?' selected':'')+'>'+l.name+' — '+l.src+' · Score '+l.score+'</option>';}).join('')+'</select></div>'+
+    (lead?
+      '<div class="ai-banner"><i class="fa-solid fa-wand-magic-sparkles" style="font-size:20px;color:var(--a);flex-shrink:0;margin-top:2px"></i><div class="ai-text">AI will write a personalised email for <strong>'+lead.name+'</strong> · '+lead.src+' · Score '+lead.score+' · '+lead.budget+'</div></div>'+
+      '<div style="display:flex;gap:8px;margin-bottom:18px;align-items:center;flex-wrap:wrap">'+
+      '<span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-sliders"></i> Tone:</span>'+
+      ['professional','friendly','bold'].map(function(t){return'<div class="pill'+(currentTone===t?' active':'')+'" id="tone-'+t+'" onclick="setTone(\''+t+'\')">'+t.charAt(0).toUpperCase()+t.slice(1)+'</div>';}).join('')+
+      '<button class="btn btn-primary btn-sm" id="genBtn" onclick="generateEmail()" style="margin-left:auto"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI</button></div>'+
+      '<div class="composer">'+
+      '<div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-at"></i> To</span><input class="comp-input" id="toInput" value="'+( lead.email||'')+'" placeholder="client@example.com"></div>'+
+      '<div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-heading"></i> Re</span><input class="comp-input" id="subjInput" value="'+genSubject+'" placeholder="Click Generate above"></div>'+
+      '<textarea class="comp-ta" id="bodyInput" placeholder="Click \'Generate with AI\' to write a personalised cold email for '+lead.name+'">'+genBody+'</textarea>'+
+      '<div class="comp-footer"><button class="btn btn-primary btn-sm" onclick="sendEmail()"><i class="fa-solid fa-paper-plane"></i> Send Email</button><button class="btn btn-sm"><i class="fa-solid fa-clock"></i> Schedule</button><button class="btn btn-sm"><i class="fa-solid fa-bookmark"></i> Save Template</button></div></div>'
+    :'<div class="empty"><div class="empty-icon"><i class="fa-solid fa-paper-plane"></i></div><h3>No lead selected</h3><p>Go to Lead Finder, select a lead, then come back to write an AI email</p><button class="btn btn-primary" style="margin-top:18px" onclick="nav(\'Leads\')"><i class="fa-solid fa-crosshairs"></i> Find Leads</button></div>');
+
+  document.getElementById('history-pane').innerHTML=outreach.length===0
+    ?'<div class="empty"><div class="empty-icon"><i class="fa-solid fa-inbox"></i></div><h3>No emails sent yet</h3><p>Generate and send your first email</p></div>'
+    :outreach.map(function(o){
+      var l=leads.find(function(x){return x.id===o.leadId;});
+      return'<div class="hcard"><div style="display:flex;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:8px"><span style="font-size:14px;font-weight:700;color:var(--t1)">'+(l?l.name:o.to)+'</span><span style="font-size:12px;color:var(--t3)">'+o.sentAt+'</span></div><div style="font-size:13px;color:var(--t2);margin-bottom:10px">'+o.subj+'</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="htag" style="background:var(--okb);color:var(--ok)"><i class="fa-solid fa-check"></i> Sent</span>'+(o.openedAt?'<span class="htag" style="background:#DBEAFE;color:#1D4ED8"><i class="fa-solid fa-eye"></i> Opened</span>':'')+(o.repliedAt?'<span class="htag" style="background:var(--al);color:var(--a)"><i class="fa-solid fa-reply"></i> Replied</span>':'<span class="htag" style="background:var(--wnb);color:var(--wn)"><i class="fa-solid fa-clock"></i> Awaiting reply</span>')+'</div></div>';
+    }).join('');
+
+  document.getElementById('tab-history').innerHTML='<i class="fa-solid fa-clock-rotate-left"></i>History ('+outreach.length+')';
+  document.getElementById('seq-panel').innerHTML=
+    '<div class="sec-title"><i class="fa-solid fa-list-check"></i>Follow-up Sequence</div>'+
+    [{day:'Day 0',l:'Initial email',s:'Auto-sent',done:true},{day:'Day 3',l:'Soft follow-up',s:'2-sentence check-in',done:false},{day:'Day 7',l:'Add value',s:'Share portfolio piece',done:false},{day:'Day 14',l:'Final check-in',s:'Last email, leave door open',done:false}].map(function(s,i){
+      return'<div class="seq-item"><div class="seq-circle '+(s.done?'seq-done':'seq-todo')+'">'+(s.done?'<i class="fa-solid fa-check"></i>':i+1)+'</div><div><div style="font-size:13px;font-weight:700;color:var(--t1)">'+s.day+' — '+s.l+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px">'+s.s+'</div></div></div>';
+    }).join('')+
+    '<div style="border-top:1px solid var(--bd);padding-top:18px;margin-top:6px"><div class="sec-title"><i class="fa-solid fa-rectangle-list"></i>Templates</div>'+
+    ['Cold Outreach','Local Business','Domain Expiry','Social DM','Agency Pitch'].map(function(t){return'<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--t1)">'+t+'</span><button class="btn btn-sm"><i class="fa-solid fa-wand"></i> Use</button></div>';}).join('')+'</div>';
+}
+
+async function generateEmail(){
+  var lead=leads.find(function(l){return l.id===composeLeadId;});
+  if(!lead)return showToast('Select a lead first','error');
+  var btn=document.getElementById('genBtn');
+  if(btn){btn.innerHTML='<span class="spinner"></span> Writing…';btn.disabled=true;}
+  genSubject='';genBody='';
+  var prompt=getEmailPromptForSkill(lead);
+  var _unused='\nWrite a personalised cold outreach email:\n- Company: '+lead.name+'\n- Need: '+lead.desc+'\n- Source: '+lead.src+'\n- Industry: '+lead.ind+'\n- Budget: '+lead.budget+'\nTone: '+(currentTone==='professional'?'Professional and concise':currentTone==='friendly'?'Warm and conversational':'Confident and bold')+'\nRules: 3-4 short paragraphs, specific opener about their business, one concrete result for similar clients, soft CTA (15-min call), sign off as '+userName+'.\nRespond ONLY with valid JSON: {"subject":"...","body":"..."}';
+  var sk=getSkillConfig();
+  var emailPrompt=getEmailPromptForSkill(lead);
+  try{
+    if(API_BASE){
+      var res=await fetch(API_BASE+'/api/outreach/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:lead.id,tone:currentTone,sender:{name:userName,skills:sk.label,portfolioUrl:userPortfolio}})});
+      var data=await res.json();genSubject=data.subject||'';genBody=data.body||'';
+    } else {
+      var res2=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:900,messages:[{role:'user',content:emailPrompt}]})});
+      var data2=await res2.json();
+      var txt=(data2.content&&data2.content[0]&&data2.content[0].text)||'{}';
+      var parsed=JSON.parse(txt.replace(/```json|```/g,'').trim());
+      genSubject=parsed.subject||'';genBody=parsed.body||'';
+    }
+  }catch(e){
+    genSubject='Quick question about '+lead.name+' — '+sk.label;
+    genBody='Hi there,\n\nI came across '+lead.name+' and believe I can help your business grow. I\'m '+userName+' — I specialise in '+sk.label+'.\n\nI recently helped a similar '+lead.ind+' business get great results through my '+sk.label+' services.\n\nWould a quick 15-minute call this week work?\n\nBest,\n'+userName+'\n'+userPortfolio;
+  }
+  if(btn){btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI';btn.disabled=false;}
+  var si=document.getElementById('subjInput'),bi=document.getElementById('bodyInput');
+  if(si)si.value=genSubject;if(bi)bi.value=genBody;
+}
+
+function sendEmail(){
+  var bi=document.getElementById('bodyInput'),si=document.getElementById('subjInput'),ti=document.getElementById('toInput');
+  if(!bi||!bi.value.trim())return showToast('Generate an email first','error');
+  var lead=leads.find(function(l){return l.id===composeLeadId;})||leads[0];
+  var entry={id:Date.now(),leadId:lead&&lead.id,to:(ti&&ti.value)||(lead&&lead.email)||'client@example.com',subj:(si&&si.value)||'(no subject)',body:bi.value,sentAt:new Date().toISOString().split('T')[0],openedAt:null,repliedAt:null};
+  outreach=[entry].concat(outreach);
+  if(lead)leads=leads.map(function(l){return l.id===lead.id?Object.assign({},l,{status:'Contacted'}):l;});
+  if(API_BASE)fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:entry.leadId,to:entry.to,subject:entry.subj,body:entry.body})}).catch(function(){});
+  genSubject='';genBody='';updateBadges();showToast('Email sent to '+entry.to);switchTab('history');renderOutreach();
+}
+
+function renderAnalytics(){
+  var sent=outreach.length,opened=outreach.filter(function(o){return o.openedAt;}).length;
+  var replied=outreach.filter(function(o){return o.repliedAt;}).length,closed=leads.filter(function(l){return l.status==='Closed';}).length;
+  document.getElementById('analyticsStats').innerHTML=[
+    {icon:'fa-paper-plane',col:'#7C3AED',bg:'#EDE9FE',lbl:'Emails Sent',v:sent},
+    {icon:'fa-eye',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Open Rate',v:sent?Math.round((opened/sent)*100)+'%':'—'},
+    {icon:'fa-reply',col:'#059669',bg:'#D1FAE5',lbl:'Reply Rate',v:sent?Math.round((replied/sent)*100)+'%':'—'},
+    {icon:'fa-handshake',col:'#D97706',bg:'#FEF3C7',lbl:'Deals Closed',v:closed},
+  ].map(function(s){return'<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div></div>';}).join('');
+
+  var bySrc=leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});
+  var byStatus=['New','Contacted','Negotiating','Closed'].map(function(s){return{l:s,v:leads.filter(function(x){return x.status===s;}).length};});
+  var mxS=Math.max.apply(null,Object.values(bySrc).concat([1]));
+  var mxSt=Math.max.apply(null,byStatus.map(function(s){return s.v;}).concat([1]));
+  var stC=['#1D4ED8','#D97706','#7C3AED','#059669'];
+  function bars(rows){return rows.map(function(r){return'<div class="bar-row"><span class="bar-lbl">'+r.l+'</span><div class="bar-track"><div class="bar-fill" style="width:'+r.p+'%;background:'+r.c+'"><span>'+r.v+'</span></div></div></div>';}).join('');}
+  document.getElementById('analyticsCharts').innerHTML=
+    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-chart-bar" style="color:var(--a)"></i>Leads by Source</div>'+(Object.keys(bySrc).length===0?'<p style="color:var(--t3);font-size:13px">Run a scan to see data</p>':bars(Object.entries(bySrc).map(function(e){return{l:e[0],v:e[1],p:Math.round((e[1]/mxS)*100),c:srcColors[e[0]]||'var(--a)'};}).slice(0,8)))+'</div>'+
+    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-filter" style="color:var(--wn)"></i>Pipeline Funnel</div>'+bars(byStatus.map(function(s,i){return{l:s.l,v:s.v,p:Math.round((s.v/mxSt)*100),c:stC[i]};}))+'</div>'+
+    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-envelope-open-text" style="color:#1D4ED8"></i>Email Performance</div>'+bars([{l:'Sent',v:sent,p:100,c:'var(--a)'},{l:'Opened',v:opened,p:sent?Math.round((opened/sent)*100):0,c:'#1D4ED8'},{l:'Replied',v:replied,p:sent?Math.round((replied/sent)*100):0,c:'#059669'}])+'</div>'+
+    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-trophy" style="color:var(--wn)"></i>Top Leads by Score</div>'+(leads.length===0?'<p style="color:var(--t3);font-size:13px">No leads yet</p>':[...leads].sort(function(a,b){return b.score-a.score;}).slice(0,5).map(function(l){return'<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)">'+mkAv(initials(l.name),getAvc(l.id),28)+'<span style="flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+l.name+'</span>'+mkScore(l.score)+'</div>';}).join(''))+'</div>';
+}
+
+function saveApiUrl(){
+  var url=(document.getElementById('apiUrlInput').value||'').trim().replace(/\/+$/,'');
+  if(!url)return showToast('Paste your Railway URL first','error');
+  document.getElementById('apiStatus').innerHTML='<span class="spinner"></span> Connecting…';
+  fetch(url+'/api/health')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      API_BASE=url;localStorage.setItem('ch_api',url);
+      document.getElementById('connDot').style.background='#059669';
+      document.getElementById('connLabel').textContent='Backend connected';
+      var active=Object.entries(data.apis||{}).filter(function(e){return e[1];}).map(function(e){return e[0];}).join(', ')||'none';
+      document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-check" style="color:var(--ok)"></i> Connected! Active APIs: '+active;
+      showToast('Backend connected!');
+      fetchLeads().then(function(){updateBadges();renderDashboard();});
+    })
+    .catch(function(){document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-xmark" style="color:var(--er)"></i> Could not connect — check your Railway URL';});
+}
+
+function saveProfile(){
+  userName=document.getElementById('sName').value;userBrand=document.getElementById('sBrand').value;
+  userSkills=document.getElementById('sSkills').value;userPortfolio=document.getElementById('sPortfolio').value;
+  localStorage.setItem('ch_name',userName);localStorage.setItem('ch_brand',userBrand);
+  localStorage.setItem('ch_skills',userSkills);localStorage.setItem('ch_portfolio',userPortfolio);
+  localStorage.setItem('ch_email',document.getElementById('sEmail').value);
+  showToast('Profile saved!');
+}
+
+function renderSettings(){
+  var saved=localStorage.getItem('ch_api')||'';
+  if(saved)document.getElementById('apiUrlInput').value=saved;
+  document.getElementById('sName').value=userName;
+  document.getElementById('sBrand').value=userBrand;
+  document.getElementById('sSkills').value=userSkills;
+  document.getElementById('sPortfolio').value=userPortfolio;
+  document.getElementById('sEmail').value=localStorage.getItem('ch_email')||'hello@theartificialworker.com';
+  var skillSel=document.getElementById('sSkillType');
+  if(skillSel){
+    skillSel.value=currentSkill;
+    var skillPrev=document.getElementById('skillPreviewText');
+    if(skillPrev){var sk=getSkillConfig();skillPrev.innerHTML='<i class="fa-solid fa-check-circle" style="color:var(--ok)"></i> '+sk.preview;}
+  }
+}
+
+
+// ── Skill Configuration ────────────────────────────────────────────
+var SKILLS = {
+  web_design: {
+    label: 'Web Design & Development',
+    icon: '🖥️',
+    keywords: ['web designer','web design','website redesign','landing page','wordpress','webflow','shopify','frontend developer','ui designer','ux designer','website developer'],
+    jobBoardQuery: 'web designer OR web developer OR website design',
+    twitterQueries: ['looking for web designer','need a web designer','need website design','hiring web designer','website redesign help'],
+    redditKeywords: ['web designer','web design','website design','build my website','need a website'],
+    googleMapsFocus: 'businesses with no website or outdated website',
+    scoringSignals: ['redesign','no website','e-commerce','ecommerce','shopify','webflow','landing page'],
+    emailTone: 'Position yourself as a web designer who builds sites that generate leads and sales.',
+    targetBusinessTypes: 'restaurant,lawyer,dentist,real_estate_agency,beauty_salon,gym,plumber,contractor',
+    preview: 'Scans for businesses needing websites · Job boards search "web designer" · AI emails focus on online presence & conversions'
+  },
+  graphic_design: {
+    label: 'Graphic Design & Branding',
+    icon: '🎨',
+    keywords: ['graphic designer','brand designer','logo design','branding','visual identity','illustrator','brand identity','creative designer'],
+    jobBoardQuery: 'graphic designer OR brand designer OR logo design',
+    twitterQueries: ['looking for graphic designer','need a logo designer','need branding help','hiring graphic designer'],
+    redditKeywords: ['graphic designer','logo design','branding','visual identity','need a designer'],
+    googleMapsFocus: 'businesses with poor visual branding or no logo',
+    scoringSignals: ['rebranding','logo','brand identity','new business','startup','visual'],
+    emailTone: 'Position yourself as a brand designer who makes businesses look professional and trustworthy.',
+    targetBusinessTypes: 'restaurant,retail,beauty_salon,gym,real_estate_agency,clothing_store',
+    preview: 'Scans for businesses needing branding · Job boards search "graphic designer" · AI emails focus on brand identity & trust'
+  },
+  video_editing: {
+    label: 'Video Editing & Production',
+    icon: '🎬',
+    keywords: ['video editor','video production','youtube editor','reel editor','video content','motion graphics','videographer','video creator'],
+    jobBoardQuery: 'video editor OR video production OR youtube editor',
+    twitterQueries: ['looking for video editor','need a video editor','hiring video editor','need youtube editor','video content help'],
+    redditKeywords: ['video editor','video editing','youtube editor','content creator help','need video editing'],
+    googleMapsFocus: 'businesses active on YouTube or social media needing video content',
+    scoringSignals: ['youtube','reels','tiktok','video content','ads','commercial','social media video'],
+    emailTone: 'Position yourself as a video editor who helps businesses grow their audience through compelling video content.',
+    targetBusinessTypes: 'gym,restaurant,real_estate_agency,beauty_salon,retail',
+    preview: 'Scans for businesses needing video content · Job boards search "video editor" · AI emails focus on audience growth & engagement'
+  },
+  copywriting: {
+    label: 'Copywriting & Content Writing',
+    icon: '✍️',
+    keywords: ['copywriter','content writer','blog writer','SEO writer','email copywriter','content creator','ghostwriter','technical writer'],
+    jobBoardQuery: 'copywriter OR content writer OR blog writer',
+    twitterQueries: ['looking for copywriter','need a content writer','hiring copywriter','need blog writer','content writing help'],
+    redditKeywords: ['copywriter','content writer','blog writer','SEO content','need writer'],
+    googleMapsFocus: 'businesses with poor website copy or no blog',
+    scoringSignals: ['blog','content','SEO','newsletter','email marketing','copy','website copy'],
+    emailTone: 'Position yourself as a copywriter who helps businesses attract more customers through compelling words.',
+    targetBusinessTypes: 'lawyer,real_estate_agency,accounting,insurance_agency,tech_company',
+    preview: 'Scans for businesses needing content · Job boards search "copywriter" · AI emails focus on SEO traffic & customer conversion'
+  },
+  social_media: {
+    label: 'Social Media Management',
+    icon: '📱',
+    keywords: ['social media manager','social media marketing','instagram manager','facebook ads','content creator','community manager','social media strategist'],
+    jobBoardQuery: 'social media manager OR social media marketing OR instagram manager',
+    twitterQueries: ['looking for social media manager','need social media help','hiring social media manager','need instagram manager'],
+    redditKeywords: ['social media manager','social media help','instagram manager','need social media','facebook marketing'],
+    googleMapsFocus: 'businesses with inactive or missing social media profiles',
+    scoringSignals: ['instagram','facebook','tiktok','social media','followers','engagement','content calendar'],
+    emailTone: 'Position yourself as a social media manager who builds brand presence and drives real engagement.',
+    targetBusinessTypes: 'restaurant,beauty_salon,gym,retail,clothing_store,cafe',
+    preview: 'Scans for businesses with weak social media · Job boards search "social media manager" · AI emails focus on brand visibility & growth'
+  },
+  seo_marketing: {
+    label: 'SEO & Digital Marketing',
+    icon: '📈',
+    keywords: ['SEO specialist','digital marketer','SEO expert','Google ads','PPC specialist','marketing consultant','SEM specialist','growth hacker'],
+    jobBoardQuery: 'SEO specialist OR digital marketer OR PPC specialist',
+    twitterQueries: ['looking for SEO expert','need digital marketing','hiring SEO specialist','need Google ads help'],
+    redditKeywords: ['SEO specialist','digital marketing','Google ads','PPC','need SEO help','marketing consultant'],
+    googleMapsFocus: 'businesses not appearing in Google search results',
+    scoringSignals: ['SEO','Google ads','PPC','ranking','traffic','leads','marketing','conversions'],
+    emailTone: 'Position yourself as an SEO expert who helps businesses rank higher on Google and get more organic customers.',
+    targetBusinessTypes: 'lawyer,dentist,real_estate_agency,accounting,doctor,restaurant',
+    preview: 'Scans for businesses with poor Google rankings · Job boards search "SEO specialist" · AI emails focus on organic traffic & leads'
+  },
+  mobile_dev: {
+    label: 'Mobile App Development',
+    icon: '📲',
+    keywords: ['mobile developer','app developer','iOS developer','android developer','react native','flutter developer','app development'],
+    jobBoardQuery: 'mobile developer OR app developer OR iOS developer OR android developer',
+    twitterQueries: ['looking for app developer','need mobile app built','hiring app developer','need iOS developer'],
+    redditKeywords: ['app developer','mobile app','iOS developer','android developer','need app built'],
+    googleMapsFocus: 'businesses without a mobile app that could benefit from one',
+    scoringSignals: ['app','mobile','iOS','android','flutter','react native','startup'],
+    emailTone: 'Position yourself as a mobile developer who turns business ideas into powerful apps.',
+    targetBusinessTypes: 'restaurant,gym,retail,real_estate_agency,healthcare',
+    preview: 'Scans for businesses needing apps · Job boards search "app developer" · AI emails focus on mobile presence & customer experience'
+  },
+  photography: {
+    label: 'Photography & Videography',
+    icon: '📷',
+    keywords: ['photographer','product photographer','real estate photographer','event photographer','videographer','commercial photographer'],
+    jobBoardQuery: 'photographer OR product photography OR real estate photographer',
+    twitterQueries: ['looking for photographer','need product photos','hiring photographer','need real estate photos'],
+    redditKeywords: ['photographer','product photography','real estate photos','need photographer','event photographer'],
+    googleMapsFocus: 'businesses with poor quality or missing photos on Google',
+    scoringSignals: ['photos','photography','product images','real estate photos','event','headshots','commercial'],
+    emailTone: 'Position yourself as a photographer who makes businesses look professional and attract more customers.',
+    targetBusinessTypes: 'restaurant,real_estate_agency,beauty_salon,retail,gym,hotel',
+    preview: 'Scans for businesses with poor photos · Job boards search "photographer" · AI emails focus on visual quality & first impressions'
+  },
+  virtual_assistant: {
+    label: 'Virtual Assistant',
+    icon: '🗂️',
+    keywords: ['virtual assistant','VA','executive assistant','admin assistant','personal assistant','remote assistant','business assistant'],
+    jobBoardQuery: 'virtual assistant OR VA OR remote assistant',
+    twitterQueries: ['looking for virtual assistant','need a VA','hiring virtual assistant','need admin help'],
+    redditKeywords: ['virtual assistant','VA','admin help','need assistant','executive assistant'],
+    googleMapsFocus: 'small businesses and solopreneurs who need admin support',
+    scoringSignals: ['busy','overwhelmed','admin','scheduling','email management','solopreneur','small business owner'],
+    emailTone: 'Position yourself as a VA who saves business owners time so they can focus on what matters.',
+    targetBusinessTypes: 'lawyer,real_estate_agency,accounting,doctor,consultant',
+    preview: 'Scans for busy business owners needing help · Job boards search "virtual assistant" · AI emails focus on saving time & reducing stress'
+  },
+  other: {
+    label: 'Custom Skill',
+    icon: '⚡',
+    keywords: [],
+    jobBoardQuery: '',
+    twitterQueries: [],
+    redditKeywords: [],
+    googleMapsFocus: 'businesses that could benefit from your services',
+    scoringSignals: [],
+    emailTone: 'Position yourself as an expert in your field who delivers real results for clients.',
+    targetBusinessTypes: 'restaurant,lawyer,dentist,real_estate_agency,beauty_salon,gym',
+    preview: 'Uses your Skills field to customise searches · AI emails adapt to your specific expertise'
+  }
+};
+
+var currentSkill = localStorage.getItem('ch_skill') || 'web_design';
+
+function onSkillChange(val) {
+  currentSkill = val;
+  localStorage.setItem('ch_skill', val);
+  var skill = SKILLS[val] || SKILLS.web_design;
+  // Update skills field automatically
+  var sSkills = document.getElementById('sSkills');
+  if (sSkills && val !== 'other') sSkills.value = skill.label;
+  userSkills = skill.label;
+  localStorage.setItem('ch_skills', userSkills);
+  // Show preview
+  var preview = document.getElementById('skillPreviewText');
+  if (preview) preview.innerHTML = '<i class="fa-solid fa-check-circle" style="color:var(--ok)"></i> ' + skill.preview;
+  showToast('Skill updated to ' + skill.icon + ' ' + skill.label);
+}
+
+function getSkillConfig() {
+  return SKILLS[currentSkill] || SKILLS.web_design;
+}
+
+function getEmailPromptForSkill(lead) {
+  var skill = getSkillConfig();
+  return 'You are ' + userName + ' from ' + userBrand + '. You are a freelance ' + skill.label + ' specialist.' +
+    ' Skills: ' + userSkills + '. Portfolio: ' + userPortfolio + '.\n' +
+    'Write a personalised cold outreach email to this potential client:\n' +
+    '- Company: ' + lead.name + '\n' +
+    '- What they need: ' + lead.desc + '\n' +
+    '- Found via: ' + lead.src + '\n' +
+    '- Industry: ' + lead.ind + '\n' +
+    '- Budget: ' + lead.budget + '\n\n' +
+    skill.emailTone + '\n\n' +
+    'Tone: ' + (currentTone === 'professional' ? 'Professional and concise' : currentTone === 'friendly' ? 'Warm and conversational' : 'Confident and bold') + '\n\n' +
+    'Rules: 3-4 short paragraphs, specific opener about THEIR business, one concrete result you got for similar clients, low-friction CTA (15-min call), sign off as ' + userName + '.\n' +
+    'Respond ONLY with valid JSON: {"subject":"...","body":"..."}';
+}
+
+function getSkillLabel() {
+  return getSkillConfig().label;
+}
+
+
+// Init
+var savedSkill=localStorage.getItem('ch_skill');
+if(savedSkill&&SKILLS[savedSkill])currentSkill=savedSkill;
+var savedApi=localStorage.getItem('ch_api');
+if(savedApi){
+  API_BASE=savedApi;
+  fetch(savedApi+'/api/health')
+    .then(function(r){return r.json();})
+    .then(function(){
+      document.getElementById('connDot').style.background='#059669';
+      document.getElementById('connLabel').textContent='Backend connected';
+      fetchLeads().then(function(){updateBadges();renderDashboard();});
+    })
+    .catch(function(){
+      document.getElementById('connDot').style.background='#DC2626';
+      document.getElementById('connLabel').textContent='Backend offline';
+      API_BASE='';
+    });
+}
+renderDashboard();
+updateBadges();
+</script>
+</body>
+</html>
