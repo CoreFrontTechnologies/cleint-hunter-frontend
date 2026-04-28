@@ -162,13 +162,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   .sidebar{position:fixed;top:0;left:0;height:100vh;transform:translateX(-100%);box-shadow:var(--shl)}
   .sidebar.open{transform:translateX(0)}.overlay.open{display:block}
   .menu-btn{display:flex}.stat-grid{grid-template-columns:repeat(2,1fr)}
-  .chart-2{grid-template-columns:1fr}.kanban-wrap{grid-template-columns:1fr 1fr;overflow-y:auto;height:auto}
-  .detail-panel{position:fixed;bottom:0;left:0;right:0;width:100%;max-height:75vh;border-radius:var(--rl) var(--rl) 0 0;border-top:2px solid var(--a);z-index:150}
+  .chart-2{grid-template-columns:1fr}
+  .kanban-wrap{grid-template-columns:1fr 1fr;overflow-y:auto;height:auto;max-height:calc(100vh - 60px)}
+  .detail-panel{position:fixed;bottom:0;left:0;right:0;width:100%!important;max-height:80vh;border-radius:var(--rl) var(--rl) 0 0;border-top:2px solid var(--a);z-index:150;overflow-y:auto}
   .two-col{grid-template-columns:1fr}
+  /* Outreach mobile fixes */
+  #page-Outreach>div:last-child{flex-direction:column!important}
+  #page-Outreach>div:last-child>div:first-child{border-right:none!important;border-bottom:1px solid var(--bd)}
+  #seq-panel{width:100%!important;max-width:100%!important}
+  .comp-footer{flex-wrap:wrap}
+  .comp-footer .btn{flex:1;justify-content:center;min-width:100px}
+  /* Tab overflow on mobile */
+  .tabs{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  .tab{flex-shrink:0}
+  /* Filter row mobile */
+  .filter-row{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .filter-row .pill{flex-shrink:0}
+  /* Topbar buttons */
+  .topbar-right .btn span:not(.spinner){display:none}
+  .scan-badge span:last-child{display:none}
 }
 @media(max-width:520px){
-  .stat-grid{grid-template-columns:1fr 1fr}.kanban-wrap{grid-template-columns:1fr}
-  .lead-meta .src-tag,.lead-meta .sbadge{display:none}.cpad{padding:16px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .kanban-wrap{grid-template-columns:1fr}
+  .lead-meta .src-tag,.lead-meta .sbadge{display:none}
+  .cpad{padding:14px}
+  .topbar{padding:10px 14px}
+  .page-title{font-size:14px}
+  /* Lead rows compact */
+  .lead-row{padding:10px 12px}
+  .lead-name{font-size:13px}
+  /* Composer mobile */
+  .comp-ta{min-height:150px}
+  .detail-panel{max-height:85vh}
 }
 </style>
 </head>
@@ -248,9 +274,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="tab active" id="tab-compose" onclick="switchTab('compose')"><i class="fa-solid fa-pen-to-square"></i>Compose</div>
         <div class="tab" id="tab-history" onclick="switchTab('history')"><i class="fa-solid fa-clock-rotate-left"></i>History</div>
       </div>
-      <div style="display:flex;flex:1;overflow:hidden">
-        <div style="flex:1;overflow-y:auto;padding:22px;border-right:1px solid var(--bd)"><div id="compose-pane"></div><div id="history-pane" style="display:none"></div></div>
-        <div style="width:275px;padding:22px;overflow-y:auto;flex-shrink:0" id="seq-panel"></div>
+      <div style="display:flex;flex:1;overflow:hidden;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px;overflow-y:auto;padding:20px;border-right:1px solid var(--bd)"><div id="compose-pane"></div><div id="history-pane" style="display:none"></div></div>
+        <div style="width:260px;min-width:260px;padding:20px;overflow-y:auto;flex-shrink:0" id="seq-panel"></div>
       </div>
     </div>
 
@@ -309,10 +335,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <tr><td><i class="fa-brands fa-reddit"></i> Reddit</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
           <tr><td><i class="fa-solid fa-globe"></i> Domain Tracker</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
           <tr><td><i class="fa-brands fa-google"></i> Google Maps</td><td><span class="kbadge kbn">GOOGLE_MAPS_API_KEY</span></td><td>console.cloud.google.com</td></tr>
-          <tr><td><i class="fa-brands fa-twitter"></i> Twitter/X</td><td><span class="kbadge kbn">TWITTER_BEARER_TOKEN</span></td><td>developer.twitter.com</td></tr>
+          <tr><td><i class="fa-brands fa-reddit"></i> Reddit + HN + Craigslist + GitHub</td><td><span class="kbadge kbf">FREE — No key</span></td><td>Works automatically ✅</td></tr>
+          <tr><td><i class="fa-brands fa-linkedin"></i> LinkedIn (via Google Search)</td><td><span class="kbadge kbn">GOOGLE_SEARCH_API_KEY + CX</span></td><td>programmablesearchengine.google.com</td></tr>
           <tr><td><i class="fa-solid fa-magnifying-glass"></i> Google Search</td><td><span class="kbadge kbn">GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX</span></td><td>programmablesearchengine.google.com</td></tr>
           <tr><td><i class="fa-solid fa-robot"></i> AI Email (Gemini)</td><td><span class="kbadge kbn">GEMINI_API_KEY</span></td><td>aistudio.google.com (FREE)</td></tr>
-          <tr><td><i class="fa-solid fa-envelope"></i> Gmail</td><td><span class="kbadge kbn">EMAIL_USER + EMAIL_PASS</span></td><td>Gmail App Password</td></tr>
+          <tr><td><i class="fa-solid fa-envelope"></i> Email (Resend — recommended)</td><td><span class="kbadge kbn">RESEND_API_KEY</span></td><td>resend.com (free, 3000/month) ⭐</td></tr>
+          <tr><td><i class="fa-brands fa-google"></i> Email (Gmail fallback)</td><td><span class="kbadge kbn">EMAIL_USER + EMAIL_PASS</span></td><td>Gmail App Password</td></tr>
         </table>
       </div>
     </div>
@@ -408,10 +436,12 @@ function renderDashboard(){
   var scanners=[
     {icon:'fa-briefcase',col:'#059669',bg:'#D1FAE5',name:'Job Boards',desc:'RemoteOK, WeWorkRemotely — searching for '+getSkillLabel(),s:'jobs'},
     {icon:'fa-map-location-dot',col:'#1D4ED8',bg:'#DBEAFE',name:'Google Maps',desc:'Local businesses with no website',s:'maps'},
-    {icon:'fa-magnifying-glass',col:'#EA4335',bg:'#FEE2E2',name:'Google Search',desc:'Find businesses looking for designers',s:'google'},
-    {icon:'fa-brands fa-twitter',col:'#1DA1F2',bg:'#E0F2FE',name:'Twitter/X',desc:'Real-time buying intent signals',s:'social'},
-    {icon:'fa-brands fa-reddit',col:'#FF4500',bg:'#FEF3C7',name:'Reddit',desc:'r/Entrepreneur, r/smallbusiness — FREE',s:'social'},
-    {icon:'fa-globe',col:'#7C3AED',bg:'#EDE9FE',name:'Domain Tracker',desc:'Expiring domains — FREE',s:'domains'},
+    {icon:'fa-magnifying-glass',col:'#EA4335',bg:'#FEE2E2',name:'Google Search',desc:'Find businesses actively looking for help',s:'google'},
+    {icon:'fa-brands fa-reddit',col:'#FF4500',bg:'#FEF3C7',name:'Reddit',desc:'r/Entrepreneur, r/smallbusiness, r/forhire — FREE',s:'social'},
+    {icon:'fa-brands fa-linkedin',col:'#0A66C2',bg:'#DBEAFE',name:'LinkedIn',desc:'Via Google Search — no LinkedIn key needed',s:'social'},
+    {icon:'fa-y-combinator',col:'#FF6600',bg:'#FEF3C7',name:'Hacker News',desc:'"Who is Hiring" threads — FREE official API',s:'social'},
+    {icon:'fa-list',col:'#6B21A8',bg:'#F3E8FF',name:'Craigslist Gigs',desc:'Local gig listings — FREE RSS feed',s:'social'},
+    {icon:'fa-globe',col:'#7C3AED',bg:'#EDE9FE',name:'Domain Tracker',desc:'Expiring domains — FREE WHOIS lookup',s:'domains'},
   ];
   document.getElementById('dashScanners').innerHTML=scanners.map(function(s){
     return'<div class="scanner-row"><div class="sc-icon" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--t1)">'+s.name+'</div><div style="font-size:11px;color:var(--t3);margin-top:1px">'+s.desc+'</div></div><button class="btn btn-sm" onclick="triggerScan(\''+s.s+'\')"><i class="fa-solid fa-play"></i></button></div>';
