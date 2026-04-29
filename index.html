@@ -577,13 +577,9 @@ function setTone(t){
 function renderOutreach(){
   var lead=leads.find(function(l){return l.id===composeLeadId;})||null;
   document.getElementById('compose-pane').innerHTML=
-    '<div style="margin-bottom:18px">'+
-    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">'+
-    '<span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-crosshairs"></i> Select lead (optional)</span>'+
-    '<button class="btn btn-sm" onclick="composeLeadId=null;genSubject=\'\';genBody=\'\';renderOutreach()" style="font-size:11px;padding:3px 10px"><i class="fa-solid fa-pen"></i> Write without lead</button>'+
-    '</div>'+
+    '<div style="margin-bottom:18px"><div style="font-size:12px;color:var(--t3);margin-bottom:7px;font-weight:700"><i class="fa-solid fa-crosshairs"></i> Select lead</div>'+
     '<select style="width:100%;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit" onchange="composeLeadId=parseInt(this.value)||null;genSubject=\'\';genBody=\'\';renderOutreach()">'+
-    '<option value="">— No lead selected (manual email) —</option>'+
+    '<option value="">— Select a lead —</option>'+
     leads.map(function(l){return'<option value="'+l.id+'"'+(l.id===composeLeadId?' selected':'')+'>'+l.name+' — '+l.src+' · Score '+l.score+'</option>';}).join('')+'</select></div>'+
     (lead?
       '<div class="ai-banner"><i class="fa-solid fa-wand-magic-sparkles" style="font-size:20px;color:var(--a);flex-shrink:0;margin-top:2px"></i><div class="ai-text">AI will write a personalised email for <strong>'+lead.name+'</strong> · '+lead.src+' · Score '+lead.score+' · '+lead.budget+'</div></div>'+
@@ -612,18 +608,7 @@ function renderOutreach(){
       return'<div class="seq-item"><div class="seq-circle '+(s.done?'seq-done':'seq-todo')+'">'+(s.done?'<i class="fa-solid fa-check"></i>':i+1)+'</div><div><div style="font-size:13px;font-weight:700;color:var(--t1)">'+s.day+' — '+s.l+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px">'+s.s+'</div></div></div>';
     }).join('')+
     '<div style="border-top:1px solid var(--bd);padding-top:18px;margin-top:6px"><div class="sec-title"><i class="fa-solid fa-rectangle-list"></i>Templates</div>'+
-    [
-      {name:'Cold Outreach',     subj:'Quick question about {{company}}',          body:'Hi there,\n\nI came across {{company}} and noticed a great opportunity to help grow your business. I specialise in '+userSkills+'.\n\nI recently helped a similar business significantly improve their results through my services.\n\nWould a quick 15-minute call this week work?\n\nBest,\n'+userName+'\n'+userPortfolio},
-      {name:'Local Business',    subj:'Your business deserves a great website',    body:'Hi there,\n\nI found {{company}} and noticed you might benefit from a stronger online presence. In today\'s market, most customers search online before making a decision.\n\nI help local businesses like yours stand out and attract more customers through professional '+userSkills+'.\n\nWould you be open to a free 15-minute consultation?\n\nBest,\n'+userName+'\n'+userPortfolio},
-      {name:'Domain Expiry Hook', subj:'Your domain is expiring soon — let\'s talk', body:'Hi there,\n\nI noticed that {{company}}\'s domain is expiring very soon. If it lapses, your website goes offline and you could lose customers.\n\nThis could actually be the perfect time to refresh your entire online presence. I specialise in '+userSkills+' and can help you come back stronger.\n\nHappy to jump on a quick call this week?\n\nBest,\n'+userName+'\n'+userPortfolio},
-      {name:'Social DM',         subj:'Saw your post — I can help',                body:'Hi there,\n\nI saw your post and wanted to reach out — I specialise in exactly what you\'re looking for.\n\nI\'ve helped several businesses in similar situations and would love to show you what I can do.\n\nAre you still looking? Happy to chat this week.\n\nBest,\n'+userName+'\n'+userPortfolio},
-      {name:'Agency Pitch',       subj:'Partnership opportunity — '+userBrand,      body:'Hi there,\n\nI run '+userBrand+' and I specialise in '+userSkills+'. I\'ve been following {{company}}\'s work and think there could be a great opportunity to collaborate.\n\nWhether it\'s a one-off project or an ongoing partnership, I\'d love to explore what we could build together.\n\nWould a quick call make sense?\n\nBest,\n'+userName+'\n'+userPortfolio},
-    ].map(function(t){
-      return'<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)">'+
-        '<span style="font-size:13px;color:var(--t1)">'+t.name+'</span>'+
-        '<button class="btn btn-sm" onclick="useTemplate('+JSON.stringify(t).replace(/</g,\'\\u003c\').replace(/>/g,\'\\u003e\').replace(/&/g,\'\\u0026\')+')" style="flex-shrink:0"><i class="fa-solid fa-wand"></i> Use</button>'+
-      '</div>';
-    }).join('')+'</div>';
+    ['Cold Outreach','Local Business','Domain Expiry','Social DM','Agency Pitch'].map(function(t){return'<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--t1)">'+t+'</span><button class="btn btn-sm"><i class="fa-solid fa-wand"></i> Use</button></div>';}).join('')+'</div>';
 }
 
 async function generateEmail(){
@@ -657,28 +642,14 @@ async function generateEmail(){
 }
 
 function sendEmail(){
-  var bi=document.getElementById('bodyInput');
-  var si=document.getElementById('subjInput');
-  var ti=document.getElementById('toInput');
-  if(!bi||!bi.value.trim())return showToast('Write or generate an email body first','error');
-  var toAddr=(ti&&ti.value.trim())||'';
-  if(!toAddr)return showToast('Enter a recipient email address','error');
-  var lead=leads.find(function(l){return l.id===composeLeadId;})||null;
-  var entry={id:Date.now(),leadId:lead?lead.id:null,to:toAddr,subj:(si&&si.value)||'(no subject)',body:bi.value,sentAt:new Date().toISOString().split('T')[0],openedAt:null,repliedAt:null};
+  var bi=document.getElementById('bodyInput'),si=document.getElementById('subjInput'),ti=document.getElementById('toInput');
+  if(!bi||!bi.value.trim())return showToast('Generate an email first','error');
+  var lead=leads.find(function(l){return l.id===composeLeadId;})||leads[0];
+  var entry={id:Date.now(),leadId:lead&&lead.id,to:(ti&&ti.value)||(lead&&lead.email)||'client@example.com',subj:(si&&si.value)||'(no subject)',body:bi.value,sentAt:new Date().toISOString().split('T')[0],openedAt:null,repliedAt:null};
   outreach=[entry].concat(outreach);
   if(lead)leads=leads.map(function(l){return l.id===lead.id?Object.assign({},l,{status:'Contacted'}):l;});
-  if(API_BASE){
-    fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:entry.leadId,to:entry.to,subject:entry.subj,body:entry.body})})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      if(data.success)showToast('Email sent to '+entry.to+' ✅');
-      else showToast('Send failed: '+(data.error||'check backend logs'),'error');
-    })
-    .catch(function(e){showToast('Send error: '+e.message,'error');});
-  } else {
-    showToast('Demo mode — connect backend to send real emails','info');
-  }
-  genSubject='';genBody='';updateBadges();switchTab('history');renderOutreach();
+  if(API_BASE)fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:entry.leadId,to:entry.to,subject:entry.subj,body:entry.body})}).catch(function(){});
+  genSubject='';genBody='';updateBadges();showToast('Email sent to '+entry.to);switchTab('history');renderOutreach();
 }
 
 function renderAnalytics(){
@@ -1008,51 +979,6 @@ function renderLogs(data) {
         var col = l.includes('ERROR') ? 'var(--er)' : l.includes('WARN') ? 'var(--wn)' : 'var(--t2)';
         return '<div style="color:' + col + '">' + l + '</div>';
       }).join('') + '</div>' : '');
-}
-
-
-// ── Template & Test Email ─────────────────────────────────────────
-function useTemplate(t) {
-  var lead = leads.find(function(l){return l.id===composeLeadId;});
-  var companyName = lead ? lead.name : 'your company';
-  var subj = t.subj.replace(/{{company}}/g, companyName);
-  var body = t.body.replace(/{{company}}/g, companyName);
-  genSubject = subj; genBody = body;
-  var si = document.getElementById('subjInput');
-  var bi = document.getElementById('bodyInput');
-  if (si) si.value = subj;
-  if (bi) bi.value = body;
-  showToast('Template loaded — edit as needed');
-}
-
-function testEmail() {
-  // Send test email to the user's own email
-  var myEmail = localStorage.getItem('ch_email') || '';
-  if (!myEmail) {
-    myEmail = prompt('Enter your email to receive the test:');
-    if (!myEmail) return;
-    localStorage.setItem('ch_email', myEmail);
-  }
-  var bi = document.getElementById('bodyInput');
-  var si = document.getElementById('subjInput');
-  var body = (bi && bi.value) || 'This is a test email from Client Hunter.';
-  var subj = (si && si.value) || '[TEST] Client Hunter Email Test';
-
-  if (API_BASE) {
-    fetch(API_BASE + '/api/outreach/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ to: myEmail, subject: '[TEST] ' + subj, body: body })
-    })
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if (data.success) showToast('Test email sent to ' + myEmail + ' ✅');
-      else showToast('Send failed: ' + (data.error || 'unknown error'), 'error');
-    })
-    .catch(function(e){ showToast('Error: ' + e.message, 'error'); });
-  } else {
-    showToast('Connect your backend first to send real emails', 'error');
-  }
 }
 
 // Init
