@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Client Hunter</title>
+<title>Client Hunter — v2.1</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
+/* Built: 2026-05-01 */
 :root{--a:#7C3AED;--al:#EDE9FE;--at:#4C1D95;--bg1:#fff;--bg2:#F8F7FF;--bg3:#F0EEFF;--t1:#0F0A1E;--t2:#4B5563;--t3:#9CA3AF;--bd:#E5E7EB;--bd2:#D1D5DB;--card:#fff;--sb:#FAFAFA;--ok:#059669;--okb:#ECFDF5;--wn:#D97706;--wnb:#FFFBEB;--er:#DC2626;--erb:#FEF2F2;--sh:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);--shl:0 8px 40px rgba(124,58,237,.12);--r:10px;--rs:7px;--rl:16px}
 [data-theme="dark"]{--bg1:#0C0918;--bg2:#130E24;--bg3:#1C1535;--t1:#F3F0FF;--t2:#A78BFA;--t3:#6D5FA6;--bd:#2D2050;--bd2:#3D2F6A;--card:#130E24;--sb:#0C0918;--al:#2D1F5E;--at:#C4B5FD;--okb:#064E3B;--wnb:#451A03;--erb:#450A0A;--sh:0 1px 3px rgba(0,0,0,.5),0 4px 16px rgba(0,0,0,.3);--shl:0 8px 40px rgba(0,0,0,.6)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -19,11 +20,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .logo-area{padding:20px 18px 14px;border-bottom:1px solid var(--bd)}
 .logo-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .logo-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--a),#A855F7);display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;box-shadow:0 4px 12px rgba(124,58,237,.35);flex-shrink:0}
-.logo-name{font-size:15px;font-weight:800;color:var(--t1)}
-.logo-tag{font-size:10px;color:var(--t3)}
+.logo-name{font-size:15px;font-weight:800;color:var(--t1)}.logo-tag{font-size:10px;color:var(--t3)}
 .conn-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;background:var(--bg3);border:1px solid var(--bd);border-radius:20px;margin-top:4px}
-.conn-dot{width:7px;height:7px;border-radius:50%;transition:background .3s}
-.conn-txt{font-size:11px;color:var(--t3);font-weight:500}
+.conn-dot{width:7px;height:7px;border-radius:50%;transition:background .3s}.conn-txt{font-size:11px;color:var(--t3);font-weight:500}
 .nav-sec{font-size:10px;font-weight:700;color:var(--t3);padding:14px 18px 5px;letter-spacing:.1em;text-transform:uppercase}
 .nav-item{display:flex;align-items:center;gap:11px;padding:9px 18px;cursor:pointer;font-size:13px;color:var(--t2);border-left:3px solid transparent;transition:all .15s;user-select:none}
 .nav-item:hover{background:var(--bg3);color:var(--t1)}.nav-item.active{background:var(--al);color:var(--a);border-left-color:var(--a);font-weight:600}
@@ -62,7 +61,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 [data-theme="dark"] .s-New{background:#1E3A5F;color:#93C5FD}[data-theme="dark"] .s-Contacted{background:#451A03;color:#FCD34D}
 .av{border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:12px}
 .av-purple{background:#EDE9FE;color:#6D28D9}.av-blue{background:#DBEAFE;color:#1D4ED8}.av-green{background:#D1FAE5;color:#065F46}.av-orange{background:#FEF3C7;color:#92400E}.av-red{background:#FEE2E2;color:#991B1B}.av-pink{background:#FCE7F3;color:#9D174D}.av-teal{background:#CCFBF1;color:#0F766E}
-[data-theme="dark"] .av-purple{background:#2D1F5E;color:#C4B5FD}[data-theme="dark"] .av-blue{background:#1E3A5F;color:#93C5FD}[data-theme="dark"] .av-green{background:#064E3B;color:#6EE7B7}[data-theme="dark"] .av-orange{background:#451A03;color:#FCD34D}[data-theme="dark"] .av-red{background:#450A0A;color:#FCA5A5}[data-theme="dark"] .av-pink{background:#500724;color:#F9A8D4}[data-theme="dark"] .av-teal{background:#134E4A;color:#5EEAD4}
+[data-theme="dark"] .av-purple{background:#2D1F5E;color:#C4B5FD}[data-theme="dark"] .av-blue{background:#1E3A5F;color:#93C5FD}[data-theme="dark"] .av-green{background:#064E3B;color:#6EE7B7}[data-theme="dark"] .av-orange{background:#451A03;color:#FCD34D}[data-theme="dark"] .av-red{background:#450A0A;color:#FCA5A5}[data-theme="dark"] .av-teal{background:#134E4A;color:#5EEAD4}
 .lead-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;cursor:pointer;transition:all .15s;background:var(--card)}
 .lead-row:hover{border-color:var(--a);box-shadow:0 4px 16px rgba(124,58,237,.1);transform:translateX(3px)}
 .lead-row.selected{border-color:var(--a);background:var(--al)}
@@ -75,10 +74,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .search-wrap input{width:100%;padding:9px 14px 9px 38px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;transition:all .15s;font-family:inherit}
 .search-wrap input:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px rgba(124,58,237,.12)}
 .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:13px;pointer-events:none}
-.empty{text-align:center;padding:60px 24px;color:var(--t3)}
-.empty-icon{font-size:52px;margin-bottom:18px;opacity:.4}
-.empty h3{font-size:17px;font-weight:700;color:var(--t2);margin-bottom:8px}
-.empty p{font-size:13px;line-height:1.7;max-width:300px;margin:0 auto}
+.empty{text-align:center;padding:60px 24px;color:var(--t3)}.empty-icon{font-size:52px;margin-bottom:18px;opacity:.4}
+.empty h3{font-size:17px;font-weight:700;color:var(--t2);margin-bottom:8px}.empty p{font-size:13px;line-height:1.7;max-width:300px;margin:0 auto}
 .kanban-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;height:100%;overflow:hidden}
 .kanban-col{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
 .kanban-col-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
@@ -144,8 +141,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .cpad{padding:24px}
 .tmpl-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bd)}
 .tmpl-name{font-size:13px;color:var(--t1)}
+/* Version badge */
+.version-badge{position:fixed;bottom:8px;left:8px;font-size:9px;color:var(--t3);opacity:.5;user-select:none;z-index:1}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 @keyframes slideU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){
   .sidebar{position:fixed;top:0;left:0;height:100vh;transform:translateX(-100%);box-shadow:var(--shl)}
@@ -154,16 +152,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   .chart-2{grid-template-columns:1fr}.kanban-wrap{grid-template-columns:1fr 1fr;overflow-y:auto;height:auto}
   .detail-panel{position:fixed;bottom:0;left:0;right:0;width:100%!important;max-height:80vh;border-radius:var(--rl) var(--rl) 0 0;border-top:2px solid var(--a);z-index:150;overflow-y:auto}
   .two-col{grid-template-columns:1fr}
-  .outreach-inner{flex-direction:column!important}
-  .seq-col{width:100%!important}
+  #page-Outreach>div.outreach-body{flex-direction:column!important}
+  #seq-panel{width:100%!important}
 }
-@media(max-width:520px){
-  .stat-grid{grid-template-columns:1fr 1fr}.kanban-wrap{grid-template-columns:1fr}
-  .lead-meta .src-tag,.lead-meta .sbadge{display:none}.cpad{padding:14px}
-}
+@media(max-width:520px){.stat-grid{grid-template-columns:1fr 1fr}.kanban-wrap{grid-template-columns:1fr}.lead-meta .src-tag,.lead-meta .sbadge{display:none}.cpad{padding:14px}}
 </style>
 </head>
 <body>
+<div class="version-badge">Client Hunter v2.1 — Built 2026-05-01</div>
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 <div class="app">
   <div class="sidebar" id="sidebar">
@@ -215,21 +211,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="stat-grid" id="dashStats"></div>
       <div class="two-col">
         <div><div class="sec-title"><i class="fa-solid fa-fire" style="color:#EF4444"></i>Recent Leads</div><div id="dashLeads"></div><button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px;justify-content:center" onclick="nav('Leads')">View all <i class="fa-solid fa-arrow-right"></i></button></div>
-        <div>
-          <div class="sec-title"><i class="fa-solid fa-satellite-dish" style="color:var(--a)"></i>Live Scanners</div>
-          <div id="dashScanners"></div>
-          <div style="margin-top:22px"><div class="sec-title"><i class="fa-solid fa-chart-pie" style="color:var(--wn)"></i>Lead Sources</div><div id="dashSources"></div></div>
-        </div>
+        <div><div class="sec-title"><i class="fa-solid fa-satellite-dish" style="color:var(--a)"></i>Live Scanners</div><div id="dashScanners"></div><div style="margin-top:22px"><div class="sec-title"><i class="fa-solid fa-chart-pie" style="color:var(--wn)"></i>Lead Sources</div><div id="dashSources"></div></div></div>
       </div>
     </div>
 
     <!-- LEADS -->
     <div class="fp" id="page-Leads">
       <div style="padding:18px 20px 0">
-        <div class="filter-row">
-          <div class="search-wrap"><span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span><input id="leadSearch" placeholder="Search leads…" oninput="renderLeads()"></div>
-          <button class="btn btn-primary btn-sm" onclick="triggerScan('all')"><i class="fa-solid fa-wand-magic-sparkles"></i> Find Leads</button>
-        </div>
+        <div class="filter-row"><div class="search-wrap"><span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span><input id="leadSearch" placeholder="Search leads…" oninput="renderLeads()"></div><button class="btn btn-primary btn-sm" onclick="triggerScan('all')"><i class="fa-solid fa-wand-magic-sparkles"></i> Find Leads</button></div>
         <div class="filter-row" id="srcFilters"></div>
       </div>
       <div style="display:flex;flex:1;overflow:hidden">
@@ -247,20 +236,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="tab active" id="tab-compose" onclick="switchTab('compose')"><i class="fa-solid fa-pen-to-square"></i> Compose</div>
         <div class="tab" id="tab-history" onclick="switchTab('history')"><i class="fa-solid fa-clock-rotate-left"></i> History</div>
       </div>
-      <div style="display:flex;flex:1;overflow:hidden" class="outreach-inner">
-        <div style="flex:1;min-width:0;overflow-y:auto;padding:22px;border-right:1px solid var(--bd)">
-          <div id="compose-pane"></div>
-          <div id="history-pane" style="display:none"></div>
-        </div>
-        <div style="width:265px;padding:22px;overflow-y:auto;flex-shrink:0" id="seq-panel" class="seq-col"></div>
+      <div style="display:flex;flex:1;overflow:hidden" class="outreach-body">
+        <div style="flex:1;min-width:0;overflow-y:auto;padding:22px;border-right:1px solid var(--bd)"><div id="compose-pane"></div><div id="history-pane" style="display:none"></div></div>
+        <div style="width:265px;padding:22px;overflow-y:auto;flex-shrink:0" id="seq-panel"></div>
       </div>
     </div>
 
     <!-- ANALYTICS -->
-    <div class="page cpad" id="page-Analytics">
-      <div class="stat-grid" id="analyticsStats"></div>
-      <div class="chart-2" id="analyticsCharts"></div>
-    </div>
+    <div class="page cpad" id="page-Analytics"><div class="stat-grid" id="analyticsStats"></div><div class="chart-2" id="analyticsCharts"></div></div>
 
     <!-- LOGS -->
     <div class="page cpad" id="page-Logs">
@@ -270,18 +253,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <button class="btn btn-sm" onclick="loadErrors()"><i class="fa-solid fa-circle-xmark"></i> Errors Only</button>
       </div>
       <div id="sysInfo"></div>
-      <div id="logsContent"><div class="empty"><div class="empty-icon"><i class="fa-solid fa-terminal"></i></div><h3>No logs loaded</h3><p>Click Refresh to see system logs</p></div></div>
+      <div id="logsContent"><div class="empty"><div class="empty-icon"><i class="fa-solid fa-terminal"></i></div><h3>Click Refresh</h3><p>Load system logs and API status</p></div></div>
     </div>
 
     <!-- SETTINGS -->
-    <div class="page cpad" id="page-Settings" style="max-width:620px">
+    <div class="page cpad" id="page-Settings" style="max-width:640px">
       <div class="api-box">
         <h3><i class="fa-solid fa-plug"></i> Connect Your Backend</h3>
-        <p>Paste your Railway URL to enable real lead scanning, AI emails, and sending.</p>
-        <div class="api-inp-row">
-          <input class="api-inp" id="apiUrlInput" placeholder="https://your-app.up.railway.app">
-          <button class="btn btn-primary" onclick="saveApiUrl()"><i class="fa-solid fa-link"></i> Connect</button>
-        </div>
+        <p>Paste your Railway URL below to enable real lead scanning, AI emails, and sending.</p>
+        <div class="api-inp-row"><input class="api-inp" id="apiUrlInput" placeholder="https://your-app.up.railway.app"><button class="btn btn-primary" onclick="saveApiUrl()"><i class="fa-solid fa-link"></i> Connect</button></div>
         <div class="api-status" id="apiStatus"><i class="fa-solid fa-circle-info"></i> Not connected — demo mode</div>
       </div>
       <div class="sec-title"><i class="fa-solid fa-user-circle"></i> Your Profile</div>
@@ -290,7 +270,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="set-row"><span class="set-lbl">Business / Brand</span><input class="set-inp" id="sBrand" value="The Artificial Worker Agency"></div>
         <div class="set-row"><span class="set-lbl">Skills</span><input class="set-inp" id="sSkills" value="web design, UI/UX and development"></div>
         <div class="set-row"><span class="set-lbl">Portfolio URL</span><input class="set-inp" id="sPortfolio" value="theartificialworker.com"></div>
-        <div class="set-row"><span class="set-lbl">Your email</span><input class="set-inp" id="sEmail" value="hello@theartificialworker.com"></div>
+        <div class="set-row"><span class="set-lbl">Your email</span><input class="set-inp" id="sEmail" value="theartificialworker@gmail.com"></div>
         <div class="set-row">
           <span class="set-lbl">Freelance skill</span>
           <select class="set-inp" id="sSkillType" onchange="saveSkill(this.value)" style="cursor:pointer;background:var(--bg2);padding:4px 8px;border-radius:6px;border:1px solid var(--bd2)">
@@ -311,592 +291,249 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <button class="btn btn-primary" style="margin-bottom:28px" onclick="saveProfile()"><i class="fa-solid fa-floppy-disk"></i> Save Profile</button>
       <div class="sec-title"><i class="fa-solid fa-key"></i> API Keys Guide</div>
       <div class="settings-block">
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">Job Boards (RemoteOK, WWR)</span><span style="font-size:11px;color:var(--ok);font-weight:700">FREE — No key needed</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">Reddit, HN, Craigslist, GitHub</span><span style="font-size:11px;color:var(--ok);font-weight:700">FREE — No key needed</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">PPH, Guru, SimplyHired, Bark</span><span style="font-size:11px;color:var(--ok);font-weight:700">FREE — No key needed</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">Google Maps</span><span style="font-size:11px;color:var(--wn);font-weight:700">GOOGLE_MAPS_API_KEY (enable billing)</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">Google Search</span><span style="font-size:11px;color:var(--wn);font-weight:700">GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">AI Emails (Gemini)</span><span style="font-size:11px;color:var(--wn);font-weight:700">GEMINI_API_KEY — get from aistudio.google.com</span></div>
-        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600">Email Sending (Resend)</span><span style="font-size:11px;color:var(--wn);font-weight:700">RESEND_API_KEY — free at resend.com</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-solid fa-briefcase"></i> Job Boards (RemoteOK, WWR, Freelancer)</span><span style="font-size:11px;color:var(--ok);font-weight:700">FREE — No key needed ✅</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-brands fa-reddit"></i> Reddit + HackerNews + Craigslist + GitHub</span><span style="font-size:11px;color:var(--ok);font-weight:700">FREE — No key needed ✅</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-brands fa-google"></i> Google Maps</span><span style="font-size:11px;color:var(--wn);font-weight:700">GOOGLE_MAPS_API_KEY — Remove API restrictions in Google Cloud</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-solid fa-magnifying-glass"></i> Google Search</span><span style="font-size:11px;color:var(--wn);font-weight:700">GOOGLE_SEARCH_API_KEY + GOOGLE_SEARCH_CX — Enable Custom Search API</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-solid fa-robot"></i> AI Emails (Gemini)</span><span style="font-size:11px;color:var(--wn);font-weight:700">GEMINI_API_KEY — Get from aistudio.google.com (NOT Google Cloud)</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-solid fa-envelope"></i> Email Sending (Resend)</span><span style="font-size:11px;color:var(--wn);font-weight:700">RESEND_API_KEY + RESEND_FROM_EMAIL=onboarding@resend.dev</span></div>
+        <div class="set-row"><span style="font-size:13px;color:var(--t1);font-weight:600"><i class="fa-solid fa-database"></i> Persistent Database</span><span style="font-size:11px;color:var(--wn);font-weight:700">Add PostgreSQL in Railway → + New → Database → PostgreSQL</span></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-// ── Config ─────────────────────────────────────────────────────────
+var _v = '2.1.0 - 2026-05-01';
 var API_BASE      = localStorage.getItem('ch_api') || '';
 var userName      = localStorage.getItem('ch_name')      || 'The Artificial Worker';
 var userBrand     = localStorage.getItem('ch_brand')     || 'The Artificial Worker Agency';
 var userSkills    = localStorage.getItem('ch_skills')    || 'web design, UI/UX and development';
 var userPortfolio = localStorage.getItem('ch_portfolio') || 'theartificialworker.com';
-var userEmail     = localStorage.getItem('ch_email')     || 'hello@theartificialworker.com';
+var userEmail     = localStorage.getItem('ch_email')     || 'theartificialworker@gmail.com';
 var currentSkill  = localStorage.getItem('ch_skill')     || 'web_design';
-
-// ── State ──────────────────────────────────────────────────────────
 var leads = [], outreach = [], selectedLeadId = null, srcFilter = 'All';
 var currentTab = 'compose', currentTone = 'professional', composeLeadId = null;
 var genSubject = '', genBody = '', draggingId = null, currentPage = 'Dashboard';
 var avcs = ['purple','blue','green','orange','red','pink','teal'];
-var srcColors = {'Upwork':'#059669','RemoteOK':'#059669','WeWorkRemotely':'#4F46E5','Freelancer.com':'#29B2FE','Google Maps':'#1D4ED8','Google Search':'#EA4335','Twitter':'#1DA1F2','Reddit':'#FF4500','Domain Tracker':'#7C3AED','LinkedIn':'#0A66C2','HackerNews':'#FF6600','Craigslist':'#9333EA','GitHub':'#1A1A1A','PeoplePerHour':'#67B346','Guru.com':'#0073E6','SimplyHired':'#0073FF','Bark.com':'#FF5733','ProductHunt':'#DA552F','IndieHackers':'#0049FF'};
+var srcColors = {'Upwork':'#059669','RemoteOK':'#059669','WeWorkRemotely':'#4F46E5','Freelancer.com':'#29B2FE','Google Maps':'#1D4ED8','Google Search':'#EA4335','Reddit':'#FF4500','HackerNews':'#FF6600','Craigslist':'#9333EA','GitHub':'#1A1A1A','LinkedIn':'#0A66C2','PeoplePerHour':'#67B346','Guru.com':'#0073E6','SimplyHired':'#0073FF','Bark.com':'#FF5733','ProductHunt':'#DA552F','IndieHackers':'#0049FF','Domain Tracker':'#7C3AED'};
 
-// ── Theme ──────────────────────────────────────────────────────────
-function toggleTheme() {
-  var html = document.documentElement;
-  var dark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', dark ? 'light' : 'dark');
-  document.getElementById('themeBtn').innerHTML = dark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
-  localStorage.setItem('ch_theme', dark ? 'light' : 'dark');
-}
-(function() {
-  var t = localStorage.getItem('ch_theme');
-  if (t) {
-    document.documentElement.setAttribute('data-theme', t);
-    window.addEventListener('load', function() {
-      var b = document.getElementById('themeBtn');
-      if (b) b.innerHTML = t === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    });
-  }
-})();
+function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('themeBtn').innerHTML=d?'<i class="fa-solid fa-moon"></i>':'<i class="fa-solid fa-sun"></i>';localStorage.setItem('ch_theme',d?'light':'dark');}
+(function(){var t=localStorage.getItem('ch_theme');if(t){document.documentElement.setAttribute('data-theme',t);window.addEventListener('load',function(){var b=document.getElementById('themeBtn');if(b)b.innerHTML=t==='dark'?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';});}})();
 
-// ── Mobile ─────────────────────────────────────────────────────────
-function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
-function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('open');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('open');}
 
-// ── Helpers ────────────────────────────────────────────────────────
-function mkAv(init, color, size) {
-  size = size || 36;
-  return '<div class="av av-' + color + '" style="width:' + size + 'px;height:' + size + 'px;font-size:' + Math.round(size * .32) + 'px">' + init + '</div>';
-}
-function mkScore(v) { var c = v >= 85 ? 'sc-h' : v >= 70 ? 'sc-m' : 'sc-l'; return '<span class="score ' + c + '">' + v + '</span>'; }
-function mkTag(v)   { return '<span class="src-tag">' + v + '</span>'; }
-function mkSt(v)    { return '<span class="sbadge s-' + v + '">' + v + '</span>'; }
-function initials(n){ return (n || '?').split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase() || '??'; }
-function getAvc(id) { return avcs[id % avcs.length]; }
+function mkAv(i,c,s){s=s||36;return'<div class="av av-'+c+'" style="width:'+s+'px;height:'+s+'px;font-size:'+Math.round(s*.32)+'px">'+i+'</div>';}
+function mkScore(v){return'<span class="score '+(v>=85?'sc-h':v>=70?'sc-m':'sc-l')+'">'+v+'</span>';}
+function mkTag(v){return'<span class="src-tag">'+v+'</span>';}
+function mkSt(v){return'<span class="sbadge s-'+v+'">'+v+'</span>';}
+function initials(n){return(n||'?').split(' ').slice(0,2).map(function(w){return w[0]||'';}).join('').toUpperCase()||'??';}
+function getAvc(id){return avcs[id%avcs.length];}
+function filteredLeads(){var q=(document.getElementById('leadSearch')||{}).value||'';return leads.filter(function(l){if(srcFilter!=='All'&&l.src!==srcFilter)return false;if(q&&l.name.toLowerCase().indexOf(q.toLowerCase())<0&&(l.desc||'').toLowerCase().indexOf(q.toLowerCase())<0)return false;return true;});}
+function showToast(msg,type){type=type||'success';var t=document.createElement('div');t.className='toast toast-'+type;t.style.animation='slideU .3s ease';var icons={success:'<i class="fa-solid fa-circle-check"></i>',error:'<i class="fa-solid fa-circle-xmark"></i>',info:'<i class="fa-solid fa-circle-info"></i>'};t.innerHTML=(icons[type]||'')+' '+msg;document.body.appendChild(t);setTimeout(function(){t.remove();},3500);}
+function updateBadges(){document.getElementById('badge-new').textContent=leads.filter(function(l){return l.status==='New';}).length;document.getElementById('badge-outh').textContent=outreach.filter(function(o){return!o.repliedAt;}).length;}
 
-function filteredLeads() {
-  var q = (document.getElementById('leadSearch') || {}).value || '';
-  return leads.filter(function(l) {
-    if (srcFilter !== 'All' && l.src !== srcFilter) return false;
-    if (q && l.name.toLowerCase().indexOf(q.toLowerCase()) < 0 && (l.desc||'').toLowerCase().indexOf(q.toLowerCase()) < 0) return false;
-    return true;
-  });
-}
-
-function showToast(msg, type) {
-  type = type || 'success';
-  var t = document.createElement('div');
-  t.className = 'toast toast-' + type;
-  t.style.animation = 'slideU .3s ease';
-  var icons = {success:'<i class="fa-solid fa-circle-check"></i>', error:'<i class="fa-solid fa-circle-xmark"></i>', info:'<i class="fa-solid fa-circle-info"></i>'};
-  t.innerHTML = (icons[type]||'') + ' ' + msg;
-  document.body.appendChild(t);
-  setTimeout(function() { t.remove(); }, 3500);
-}
-
-function updateBadges() {
-  document.getElementById('badge-new').textContent  = leads.filter(function(l){return l.status==='New';}).length;
-  document.getElementById('badge-outh').textContent = outreach.filter(function(o){return !o.repliedAt;}).length;
-}
-
-// ── Navigation ─────────────────────────────────────────────────────
-function nav(name) {
+function nav(name){
   closeSidebar();
-  document.querySelectorAll('.page,.fp').forEach(function(p){ p.classList.remove('active'); p.style.display='none'; });
-  document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
-  var pg = document.getElementById('page-' + name);
-  if (!pg) return;
-  pg.classList.add('active');
-  pg.style.display = pg.classList.contains('fp') ? 'flex' : 'block';
-  document.querySelectorAll('.nav-item').forEach(function(n) {
-    if (n.getAttribute('onclick') && n.getAttribute('onclick').indexOf("'" + name + "'") > -1) n.classList.add('active');
-  });
-  var titles = {Dashboard:'Dashboard',Leads:'Lead Finder',CRM:'CRM Pipeline',Outreach:'Outreach',Analytics:'Analytics',Logs:'System Logs',Settings:'Settings'};
-  document.getElementById('pageTitle').textContent = titles[name] || name;
-  currentPage = name;
-  if (name==='Dashboard')  renderDashboard();
-  if (name==='Leads')      renderLeads();
-  if (name==='CRM')        renderKanban();
-  if (name==='Outreach')   renderOutreach();
-  if (name==='Analytics')  renderAnalytics();
-  if (name==='Logs')       loadLogs();
-  if (name==='Settings')   renderSettings();
+  document.querySelectorAll('.page,.fp').forEach(function(p){p.classList.remove('active');p.style.display='none';});
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  var pg=document.getElementById('page-'+name);if(!pg)return;
+  pg.classList.add('active');pg.style.display=pg.classList.contains('fp')?'flex':'block';
+  document.querySelectorAll('.nav-item').forEach(function(n){if(n.getAttribute('onclick')&&n.getAttribute('onclick').indexOf("'"+name+"'")>-1)n.classList.add('active');});
+  document.getElementById('pageTitle').textContent={Dashboard:'Dashboard',Leads:'Lead Finder',CRM:'CRM Pipeline',Outreach:'Outreach',Analytics:'Analytics',Logs:'System Logs',Settings:'Settings'}[name]||name;
+  currentPage=name;
+  if(name==='Dashboard')renderDashboard();if(name==='Leads')renderLeads();if(name==='CRM')renderKanban();
+  if(name==='Outreach')renderOutreach();if(name==='Analytics')renderAnalytics();if(name==='Logs')loadLogs();if(name==='Settings')renderSettings();
 }
 
-// ── Dashboard ──────────────────────────────────────────────────────
-function renderDashboard() {
-  var newC   = leads.filter(function(l){return l.status==='New';}).length;
-  var cont   = leads.filter(function(l){return l.status==='Contacted';}).length;
-  var closed = leads.filter(function(l){return l.status==='Closed';}).length;
-  var pipe   = leads.reduce(function(s,l){return s+parseInt((l.budget||'0').replace(/\D/g,'')||0);},0);
-  document.getElementById('dashStats').innerHTML = [
-    {icon:'fa-crosshairs', col:'#7C3AED',bg:'#EDE9FE',lbl:'New Leads',    v:newC,   ch:'Ready to contact'},
-    {icon:'fa-paper-plane',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Contacted',   v:cont,   ch:outreach.length+' emails sent'},
-    {icon:'fa-handshake',  col:'#059669',bg:'#D1FAE5',lbl:'Deals Closed', v:closed, ch:'This month'},
-    {icon:'fa-coins',      col:'#D97706',bg:'#FEF3C7',lbl:'Pipeline',     v:'$'+pipe.toLocaleString(),ch:'Estimated'},
-  ].map(function(s){
-    return '<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div><div class="stat-change" style="color:'+s.col+'">'+s.ch+'</div></div>';
-  }).join('');
-
-  document.getElementById('dashLeads').innerHTML = leads.length === 0
-    ? '<div class="empty" style="padding:30px 0"><div class="empty-icon"><i class="fa-solid fa-crosshairs"></i></div><h3>No leads yet</h3><p>Click Scan All to find clients automatically</p></div>'
-    : leads.slice(0,5).map(function(l){
-        return '<div class="lead-row" onclick="nav(\'Leads\')">' + mkAv(initials(l.name),getAvc(l.id)) + '<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div>'+mkScore(l.score)+'</div>';
-      }).join('');
-
-  var scanners = [
-    {icon:'fa-briefcase',       col:'#059669',bg:'#D1FAE5',name:'Job Boards',      desc:'RemoteOK, WWR, Freelancer.com — FREE',s:'jobs'},
-    {icon:'fa-map-location-dot',col:'#1D4ED8',bg:'#DBEAFE',name:'Google Maps',     desc:'Local businesses with no website',s:'maps'},
-    {icon:'fa-magnifying-glass',col:'#EA4335',bg:'#FEE2E2',name:'Google Search',   desc:'Businesses searching for your skills',s:'google'},
-    {icon:'fa-brands fa-reddit',col:'#FF4500',bg:'#FEF3C7',name:'Reddit + HN',     desc:'r/forhire, Who is Hiring — FREE',s:'social'},
-    {icon:'fa-list',            col:'#9333EA',bg:'#F3E8FF',name:'Craigslist + More',desc:'PPH, Guru, SimplyHired, Bark — FREE',s:'extra'},
-    {icon:'fa-globe',           col:'#7C3AED',bg:'#EDE9FE',name:'Domain Tracker',  desc:'Expiring domains — FREE',s:'domains'},
-  ];
-  document.getElementById('dashScanners').innerHTML = scanners.map(function(s){
-    return '<div class="scanner-row"><div class="sc-icon" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--t1)">'+s.name+'</div><div style="font-size:11px;color:var(--t3);margin-top:1px">'+s.desc+'</div></div><button class="btn btn-sm" onclick="triggerScan(\''+s.s+'\')"><i class="fa-solid fa-play"></i></button></div>';
-  }).join('');
-
-  var srcs = leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});
-  var mx   = Math.max.apply(null, Object.values(srcs).concat([1]));
-  document.getElementById('dashSources').innerHTML = Object.keys(srcs).length === 0
-    ? '<p style="font-size:13px;color:var(--t3)">Run a scan to see source breakdown</p>'
-    : Object.entries(srcs).map(function(e){
-        return '<div class="bar-row"><span class="bar-lbl">'+e[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.round((e[1]/mx)*100)+'%;background:'+(srcColors[e[0]]||'var(--a)')+'"><span>'+e[1]+'</span></div></div></div>';
-      }).join('');
+function renderDashboard(){
+  var newC=leads.filter(function(l){return l.status==='New';}).length,cont=leads.filter(function(l){return l.status==='Contacted';}).length,closed=leads.filter(function(l){return l.status==='Closed';}).length,pipe=leads.reduce(function(s,l){return s+parseInt((l.budget||'0').replace(/\D/g,'')||0);},0);
+  document.getElementById('dashStats').innerHTML=[{icon:'fa-crosshairs',col:'#7C3AED',bg:'#EDE9FE',lbl:'New Leads',v:newC,ch:'Ready to contact'},{icon:'fa-paper-plane',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Contacted',v:cont,ch:outreach.length+' emails sent'},{icon:'fa-handshake',col:'#059669',bg:'#D1FAE5',lbl:'Deals Closed',v:closed,ch:'This month'},{icon:'fa-coins',col:'#D97706',bg:'#FEF3C7',lbl:'Pipeline',v:'$'+pipe.toLocaleString(),ch:'Estimated'}].map(function(s){return'<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div><div class="stat-change" style="color:'+s.col+'">'+s.ch+'</div></div>';}).join('');
+  document.getElementById('dashLeads').innerHTML=leads.length===0?'<div class="empty" style="padding:30px 0"><div class="empty-icon"><i class="fa-solid fa-crosshairs"></i></div><h3>No leads yet</h3><p>Click Scan All to find clients automatically</p></div>':leads.slice(0,5).map(function(l){return'<div class="lead-row" onclick="nav(\'Leads\')">'+mkAv(initials(l.name),getAvc(l.id))+'<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div>'+mkScore(l.score)+'</div>';}).join('');
+  var scanners=[{icon:'fa-briefcase',col:'#059669',bg:'#D1FAE5',name:'Job Boards',desc:'RemoteOK, WWR, Freelancer.com — FREE',s:'jobs'},{icon:'fa-map-location-dot',col:'#1D4ED8',bg:'#DBEAFE',name:'Google Maps',desc:'Local businesses — remove API key restrictions',s:'maps'},{icon:'fa-magnifying-glass',col:'#EA4335',bg:'#FEE2E2',name:'Google Search',desc:'Enable Custom Search API in Google Cloud',s:'google'},{icon:'fa-brands fa-reddit',col:'#FF4500',bg:'#FEF3C7',name:'Reddit + HN',desc:'r/forhire, Who is Hiring — FREE',s:'social'},{icon:'fa-list',col:'#9333EA',bg:'#F3E8FF',name:'Craigslist + More',desc:'PPH, Guru, SimplyHired, Bark — FREE',s:'extra'},{icon:'fa-globe',col:'#7C3AED',bg:'#EDE9FE',name:'Domain Tracker',desc:'Expiring domains — FREE',s:'domains'}];
+  document.getElementById('dashScanners').innerHTML=scanners.map(function(s){return'<div class="scanner-row"><div class="sc-icon" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--t1)">'+s.name+'</div><div style="font-size:11px;color:var(--t3);margin-top:1px">'+s.desc+'</div></div><button class="btn btn-sm" onclick="triggerScan(\''+s.s+'\')"><i class="fa-solid fa-play"></i></button></div>';}).join('');
+  var srcs=leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});var mx=Math.max.apply(null,Object.values(srcs).concat([1]));
+  document.getElementById('dashSources').innerHTML=Object.keys(srcs).length===0?'<p style="font-size:13px;color:var(--t3)">Run a scan to see source breakdown</p>':Object.entries(srcs).map(function(e){return'<div class="bar-row"><span class="bar-lbl">'+e[0]+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.round((e[1]/mx)*100)+'%;background:'+(srcColors[e[0]]||'var(--a)')+'"><span>'+e[1]+'</span></div></div></div>';}).join('');
 }
 
-// ── Lead Finder ────────────────────────────────────────────────────
-function renderLeads() {
-  var allSrcs = ['All'].concat([].slice.call(new Set(leads.map(function(l){return l.src;}))));
-  document.getElementById('srcFilters').innerHTML =
-    allSrcs.slice(0,7).map(function(s){
-      return '<div class="pill'+(srcFilter===s?' active':'')+'" onclick="setSrc(\''+s+'\')">'+ s +'</div>';
-    }).join('') + '<span style="margin-left:auto;font-size:12px;color:var(--t3);align-self:center">'+filteredLeads().length+' leads</span>';
-
-  var fil = filteredLeads();
-  document.getElementById('leadList').innerHTML = fil.length === 0
-    ? '<div class="empty"><div class="empty-icon"><i class="fa-solid fa-'+(leads.length===0?'crosshairs':'filter')+'"></i></div><h3>'+(leads.length===0?'No leads yet':'No results')+'</h3><p>'+(leads.length===0?'Click "Find Leads" to start scanning':'Try a different search or filter')+'</p>'+(leads.length===0?'<button class="btn btn-primary" style="margin-top:18px" onclick="triggerScan(\'all\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Find Leads Now</button>':'')+'</div>'
-    : fil.map(function(l){
-        return '<div class="lead-row'+(selectedLeadId===l.id?' selected':'')+'" onclick="selectLead('+l.id+')">'+
-          mkAv(initials(l.name),getAvc(l.id))+
-          '<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div>'+
-          '<div class="lead-meta"><span style="font-size:12px;color:var(--t3);font-weight:700">'+l.budget+'</span>'+mkScore(l.score)+mkTag(l.src)+mkSt(l.status)+'</div></div>';
-      }).join('');
-
-  var panel = document.getElementById('detailPanel');
-  if (selectedLeadId) { panel.style.display=''; renderDetail(leads.find(function(l){return l.id===selectedLeadId;})); }
-  else panel.style.display = 'none';
+function renderLeads(){
+  var allSrcs=['All'].concat(Array.from(new Set(leads.map(function(l){return l.src;}))));
+  document.getElementById('srcFilters').innerHTML=allSrcs.slice(0,7).map(function(s){return'<div class="pill'+(srcFilter===s?' active':'')+'" onclick="setSrc(\''+s+'\')">'+s+'</div>';}).join('')+'<span style="margin-left:auto;font-size:12px;color:var(--t3);align-self:center">'+filteredLeads().length+' leads</span>';
+  var fil=filteredLeads();
+  document.getElementById('leadList').innerHTML=fil.length===0?'<div class="empty"><div class="empty-icon"><i class="fa-solid fa-'+(leads.length===0?'crosshairs':'filter')+'"></i></div><h3>'+(leads.length===0?'No leads yet':'No results')+'</h3><p>'+(leads.length===0?'Click Find Leads to start scanning':'Try a different filter')+'</p>'+(leads.length===0?'<button class="btn btn-primary" style="margin-top:18px" onclick="triggerScan(\'all\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Find Leads Now</button>':'')+'</div>':fil.map(function(l){return'<div class="lead-row'+(selectedLeadId===l.id?' selected':'')+'" onclick="selectLead('+l.id+')">'+mkAv(initials(l.name),getAvc(l.id))+'<div style="flex:1;min-width:0"><div class="lead-name">'+l.name+'</div><div class="lead-desc">'+l.desc+'</div></div><div class="lead-meta"><span style="font-size:12px;color:var(--t3);font-weight:700">'+l.budget+'</span>'+mkScore(l.score)+mkTag(l.src)+mkSt(l.status)+'</div></div>';}).join('');
+  var panel=document.getElementById('detailPanel');if(selectedLeadId){panel.style.display='';renderDetail(leads.find(function(l){return l.id===selectedLeadId;}));}else panel.style.display='none';
 }
 
-function setSrc(s) { srcFilter=s; renderLeads(); }
-function selectLead(id) { selectedLeadId = selectedLeadId===id ? null : id; renderLeads(); }
+function setSrc(s){srcFilter=s;renderLeads();}
+function selectLead(id){selectedLeadId=selectedLeadId===id?null:id;renderLeads();}
 
-function renderDetail(l) {
-  if (!l) return;
-  document.getElementById('detailPanel').innerHTML =
-    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">'+mkAv(initials(l.name),getAvc(l.id),44)+
-    '<div><div style="font-size:15px;font-weight:800;color:var(--t1)">'+l.name+'</div><div style="font-size:12px;color:var(--t3);margin-top:3px">'+(l.ind||'Unknown')+'</div></div></div>'+
-    '<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+l.desc+'</p>'+
-    '<div style="margin-bottom:18px">'+
-    [['Source',l.src],['Budget',l.budget],['Score',l.score],['Website',l.web||'—'],['Email',l.email||'—']].map(function(f){
-      return '<div class="det-field"><span class="det-key">'+f[0]+'</span><span class="det-val">'+f[1]+'</span></div>';
-    }).join('')+'</div>'+
-    '<div style="font-size:12px;color:var(--t3);margin-bottom:6px;font-weight:700">Update Status</div>'+
-    '<select style="width:100%;padding:9px 12px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit;margin-bottom:14px" onchange="updateStatus('+l.id+',this.value)">'+
-    ['New','Contacted','Negotiating','Closed'].map(function(s){return '<option'+(s===l.status?' selected':'')+'>'+s+'</option>';}).join('')+'</select>'+
-    '<button class="btn btn-primary" style="width:100%;justify-content:center" onclick="composeLeadId='+l.id+';nav(\'Outreach\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Write AI Email</button>'+
-    '<button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;color:var(--er)" onclick="deleteLead('+l.id+')"><i class="fa-solid fa-trash"></i> Remove Lead</button>';
+function renderDetail(l){
+  if(!l)return;
+  document.getElementById('detailPanel').innerHTML='<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">'+mkAv(initials(l.name),getAvc(l.id),44)+'<div><div style="font-size:15px;font-weight:800;color:var(--t1)">'+l.name+'</div><div style="font-size:12px;color:var(--t3);margin-top:3px">'+(l.ind||'Unknown')+'</div></div></div><p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:18px">'+l.desc+'</p><div style="margin-bottom:18px">'+[['Source',l.src],['Budget',l.budget],['Score',l.score],['Website',l.web||'—'],['Email',l.email||'—']].map(function(f){return'<div class="det-field"><span class="det-key">'+f[0]+'</span><span class="det-val">'+f[1]+'</span></div>';}).join('')+'</div>'+(l.notes?'<div style="font-size:12px;color:var(--t2);background:var(--bg3);border-radius:var(--rs);padding:10px;margin-bottom:14px;line-height:1.6;border:1px solid var(--bd)">'+l.notes+'</div>':'')+'<div style="font-size:12px;color:var(--t3);margin-bottom:6px;font-weight:700">Update Status</div><select style="width:100%;padding:9px 12px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit;margin-bottom:14px" onchange="updateStatus('+l.id+',this.value)">'+['New','Contacted','Negotiating','Closed'].map(function(s){return'<option'+(s===l.status?' selected':'')+'>'+s+'</option>';}).join('')+'</select><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="composeLeadId='+l.id+';nav(\'Outreach\')"><i class="fa-solid fa-wand-magic-sparkles"></i> Write AI Email</button><button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;color:var(--er)" onclick="deleteLead('+l.id+')"><i class="fa-solid fa-trash"></i> Remove Lead</button>';
 }
 
-function updateStatus(id,st) {
-  leads = leads.map(function(l){return l.id===id ? Object.assign({},l,{status:st}) : l;});
-  updateBadges(); renderDetail(leads.find(function(l){return l.id===id;}));
-  if (API_BASE) fetch(API_BASE+'/api/leads/'+id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:st})}).catch(function(){});
-}
+function updateStatus(id,st){leads=leads.map(function(l){return l.id===id?Object.assign({},l,{status:st}):l;});updateBadges();renderDetail(leads.find(function(l){return l.id===id;}));if(API_BASE)fetch(API_BASE+'/api/leads/'+id,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:st})}).catch(function(){});}
+function deleteLead(id){leads=leads.filter(function(l){return l.id!==id;});selectedLeadId=null;document.getElementById('detailPanel').style.display='none';updateBadges();renderLeads();if(API_BASE)fetch(API_BASE+'/api/leads/'+id,{method:'DELETE'}).catch(function(){});showToast('Lead removed','info');}
 
-function deleteLead(id) {
-  leads = leads.filter(function(l){return l.id!==id;});
-  selectedLeadId = null; document.getElementById('detailPanel').style.display='none';
-  updateBadges(); renderLeads();
-  if (API_BASE) fetch(API_BASE+'/api/leads/'+id,{method:'DELETE'}).catch(function(){});
-  showToast('Lead removed','info');
-}
-
-// ── Scan ───────────────────────────────────────────────────────────
-async function triggerScan(src) {
-  var badge = document.getElementById('scanBadge');
-  var lbl   = document.getElementById('scanLabel');
-  var labels = {jobs:'Scanning job boards…',maps:'Scanning Google Maps…',google:'Searching Google…',social:'Scanning Reddit + HN…',extra:'Scanning PPH, Guru, Bark…',domains:'Checking domains…',all:'Running all scanners…'};
-  badge.style.display = 'flex'; lbl.textContent = labels[src] || 'Scanning…';
-
-  if (API_BASE) {
-    try {
-      var res  = await fetch(API_BASE+'/api/leads/scan/'+src, {method:'POST',headers:{'Content-Type':'application/json'}});
-      var data = await res.json();
-      await fetchLeads();
-      badge.style.display = 'none';
-      var saved = data.totalSaved || data.saved || 0;
-      showToast(saved>0 ? 'Found '+saved+' new lead'+(saved>1?'s':'')+'!' : 'Scan complete — no new leads this time');
-      if (currentPage==='Dashboard') renderDashboard();
-      if (currentPage==='Leads')     renderLeads();
-      updateBadges(); return;
-    } catch(e) { console.error('Scan error:',e); }
+async function triggerScan(src){
+  var badge=document.getElementById('scanBadge'),lbl=document.getElementById('scanLabel');
+  var labels={jobs:'Scanning job boards…',maps:'Scanning Google Maps…',google:'Searching Google…',social:'Scanning Reddit + HN…',extra:'Scanning PPH, Guru, Bark…',domains:'Checking domains…',all:'Running all scanners…'};
+  badge.style.display='flex';lbl.textContent=labels[src]||'Scanning…';
+  if(API_BASE){
+    try{
+      var res=await fetch(API_BASE+'/api/leads/scan/'+src,{method:'POST',headers:{'Content-Type':'application/json'}});
+      var data=await res.json();await fetchLeads();badge.style.display='none';
+      var saved=data.totalSaved||data.saved||0;
+      showToast(saved>0?'Found '+saved+' new lead'+(saved>1?'s':'')+'!':'Scan complete — check Logs for details');
+      if(currentPage==='Dashboard')renderDashboard();if(currentPage==='Leads')renderLeads();updateBadges();return;
+    }catch(e){console.error('Scan:',e);}
   }
-
-  // Demo mode
   await new Promise(function(r){setTimeout(r,2000);});
-  var names = ['Bright Digital Agency','Lagos Tech Hub','Swift Marketing Co','Greenfield Law Firm','Nova Restaurant Group','Apex Dental Clinic','Prime Consulting Ltd','Metro Real Estate','Coastal Media Group','Sunrise Bakery Lagos'];
-  var inds  = ['Agency','Legal','Healthcare','Restaurant','Retail','Consulting','Real Estate','Technology'];
-  var srcMap = {jobs:'RemoteOK',maps:'Google Maps',google:'Google Search',social:'Reddit',extra:'PeoplePerHour',domains:'Domain Tracker',all:'Upwork'};
-  var name = names[Math.floor(Math.random()*names.length)];
-  leads = [{id:Date.now(),name:name,desc:'Potential client found via '+(srcMap[src]||src)+' scan',src:srcMap[src]||src,ind:inds[Math.floor(Math.random()*inds.length)],budget:'$'+(Math.floor(Math.random()*30+10)*100),score:65+Math.round(Math.random()*30),status:'New',email:'',web:'',notes:''}].concat(leads);
-  badge.style.display = 'none'; updateBadges();
-  if (currentPage==='Dashboard') renderDashboard();
-  if (currentPage==='Leads')     renderLeads();
-  showToast('Found 1 new lead: '+name);
+  var names=['Bright Digital Agency','Lagos Tech Hub','Swift Marketing Co','Greenfield Law Firm','Nova Restaurant Group','Apex Dental Clinic','Prime Consulting Ltd','Metro Real Estate'];
+  var inds=['Agency','Legal','Healthcare','Restaurant','Retail','Consulting','Real Estate','Technology'];
+  var srcMap={jobs:'RemoteOK',maps:'Google Maps',google:'Google Search',social:'Reddit',extra:'PeoplePerHour',domains:'Domain Tracker',all:'Upwork'};
+  var name=names[Math.floor(Math.random()*names.length)];
+  leads=[{id:Date.now(),name:name,desc:'Potential client found via '+(srcMap[src]||src),src:srcMap[src]||src,ind:inds[Math.floor(Math.random()*inds.length)],budget:'$'+(Math.floor(Math.random()*30+10)*100),score:65+Math.round(Math.random()*30),status:'New',email:'',web:'',notes:''}].concat(leads);
+  badge.style.display='none';updateBadges();if(currentPage==='Dashboard')renderDashboard();if(currentPage==='Leads')renderLeads();showToast('Demo: Found 1 lead — connect backend for real leads');
 }
 
-async function fetchLeads() {
-  if (!API_BASE) return;
-  try {
-    var res  = await fetch(API_BASE+'/api/leads?limit=200');
-    var data = await res.json();
-    if (Array.isArray(data.leads)) {
-      leads = data.leads.map(function(l){return{id:l.id,name:l.name,desc:l.description,src:l.source,ind:l.industry,budget:l.budget_estimate||'TBD',score:l.score,status:l.status,email:l.email||'',web:l.website||'',notes:l.notes||''};});
-      updateBadges();
-    }
-  } catch(e) {}
+async function fetchLeads(){
+  if(!API_BASE)return;
+  try{var res=await fetch(API_BASE+'/api/leads?limit=200');var data=await res.json();if(Array.isArray(data.leads)){leads=data.leads.map(function(l){return{id:l.id,name:l.name,desc:l.description,src:l.source,ind:l.industry,budget:l.budget_estimate||'TBD',score:l.score,status:l.status,email:l.email||'',web:l.website||'',notes:l.notes||''};});updateBadges();}}catch(e){}
 }
 
-// ── Kanban ─────────────────────────────────────────────────────────
-function renderKanban() {
-  var cols = ['New','Contacted','Negotiating','Closed'];
-  var cc   = {New:'#1D4ED8',Contacted:'#D97706',Negotiating:'#7C3AED',Closed:'#059669'};
-  var icons= {New:'fa-star',Contacted:'fa-envelope-open',Negotiating:'fa-handshake',Closed:'fa-circle-check'};
-  document.getElementById('kanban').innerHTML = cols.map(function(col){
-    var cl = leads.filter(function(l){return l.status===col;});
-    return '<div class="kanban-col" ondragover="event.preventDefault();this.querySelector(\'.drop-zone\').classList.add(\'over\')" ondragleave="this.querySelector(\'.drop-zone\').classList.remove(\'over\')" ondrop="dropLead(\''+col+'\',this)">'+
-      '<div class="kanban-col-hdr"><span class="kanban-col-name" style="color:'+cc[col]+'"><i class="fa-solid '+icons[col]+'"></i>'+col+'</span><span class="kanban-count">'+cl.length+'</span></div>'+
-      cl.map(function(l){
-        return '<div class="kcard" draggable="true" ondragstart="draggingId='+l.id+'">'+
-          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'+mkAv(initials(l.name),getAvc(l.id),28)+'<div class="kcard-name">'+l.name+'</div></div>'+
-          '<div class="kcard-desc">'+l.desc+'</div>'+
-          '<div style="display:flex;justify-content:space-between;align-items:center">'+mkTag(l.src)+mkScore(l.score)+'</div>'+
-          '<div class="kcard-budget">'+l.budget+'</div></div>';
-      }).join('')+
-      '<div class="drop-zone"><i class="fa-solid fa-arrow-down"></i> Drop here</div></div>';
-  }).join('');
+function renderKanban(){
+  var cols=['New','Contacted','Negotiating','Closed'],cc={New:'#1D4ED8',Contacted:'#D97706',Negotiating:'#7C3AED',Closed:'#059669'},icons={New:'fa-star',Contacted:'fa-envelope-open',Negotiating:'fa-handshake',Closed:'fa-circle-check'};
+  document.getElementById('kanban').innerHTML=cols.map(function(col){var cl=leads.filter(function(l){return l.status===col;});return'<div class="kanban-col" ondragover="event.preventDefault();this.querySelector(\'.drop-zone\').classList.add(\'over\')" ondragleave="this.querySelector(\'.drop-zone\').classList.remove(\'over\')" ondrop="dropLead(\''+col+'\',this)"><div class="kanban-col-hdr"><span class="kanban-col-name" style="color:'+cc[col]+'"><i class="fa-solid '+icons[col]+'"></i>'+col+'</span><span class="kanban-count">'+cl.length+'</span></div>'+cl.map(function(l){return'<div class="kcard" draggable="true" ondragstart="draggingId='+l.id+'"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'+mkAv(initials(l.name),getAvc(l.id),28)+'<div class="kcard-name">'+l.name+'</div></div><div class="kcard-desc">'+l.desc+'</div><div style="display:flex;justify-content:space-between;align-items:center">'+mkTag(l.src)+mkScore(l.score)+'</div><div class="kcard-budget">'+l.budget+'</div></div>';}).join('')+'<div class="drop-zone"><i class="fa-solid fa-arrow-down"></i> Drop here</div></div>';}).join('');
 }
+function dropLead(col,colEl){colEl.querySelector('.drop-zone').classList.remove('over');if(!draggingId)return;var did=draggingId;leads=leads.map(function(l){return l.id===did?Object.assign({},l,{status:col}):l;});draggingId=null;updateBadges();renderKanban();if(API_BASE)fetch(API_BASE+'/api/leads/'+did,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:col})}).catch(function(){});}
 
-function dropLead(col,colEl) {
-  colEl.querySelector('.drop-zone').classList.remove('over');
-  if (!draggingId) return;
-  var did = draggingId;
-  leads = leads.map(function(l){return l.id===did?Object.assign({},l,{status:col}):l;});
-  draggingId = null; updateBadges(); renderKanban();
-  if (API_BASE) fetch(API_BASE+'/api/leads/'+did,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:col})}).catch(function(){});
-}
-
-// ── Outreach ───────────────────────────────────────────────────────
-var TEMPLATES = [
-  {name:'Cold Outreach',      subj:'Quick question about {company}',           body:'Hi there,\n\nI came across {company} and noticed a great opportunity to help grow your business. I specialise in {skills}.\n\nI recently helped a similar business significantly improve their results through my services.\n\nWould a quick 15-minute call this week work?\n\nBest,\n{name}\n{portfolio}'},
-  {name:'Local Business',     subj:'Your business deserves a great website',   body:'Hi there,\n\nI found {company} and noticed you might benefit from a stronger online presence. Most customers search online before making a decision.\n\nI help local businesses like yours stand out through professional {skills}.\n\nWould you be open to a free 15-minute consultation?\n\nBest,\n{name}\n{portfolio}'},
-  {name:'Domain Expiry Hook', subj:"Your domain is expiring soon — let's talk",body:"Hi there,\n\nI noticed {company}'s domain is expiring very soon. If it lapses, your website could go offline.\n\nThis is the perfect time to refresh your entire online presence. I specialise in {skills} and can help you come back stronger.\n\nHappy to jump on a quick call this week?\n\nBest,\n{name}\n{portfolio}"},
-  {name:'Social DM',          subj:'Saw your post — I can help',               body:"Hi there,\n\nI saw your post and wanted to reach out — I specialise in exactly what you're looking for.\n\nI've helped several businesses in similar situations. Would love to show you what I can do.\n\nAre you still looking? Happy to chat this week.\n\nBest,\n{name}\n{portfolio}"},
-  {name:'Agency Pitch',       subj:'Partnership opportunity — {brand}',        body:"Hi there,\n\nI run {brand} and specialise in {skills}. I think there could be a great opportunity to collaborate.\n\nWhether it's a one-off project or ongoing partnership, I'd love to explore what we could build together.\n\nWould a quick call make sense?\n\nBest,\n{name}\n{portfolio}"},
+var TEMPLATES=[
+  {name:'Cold Outreach',subj:'Quick question about {company}',body:'Hi there,\n\nI came across {company} and noticed a great opportunity to help your business grow. I specialise in {skills}.\n\nI recently helped a similar business significantly improve their results through my services.\n\nWould a quick 15-minute call this week work?\n\nBest,\n{name}\n{portfolio}'},
+  {name:'Local Business',subj:'Your business deserves a great online presence',body:'Hi there,\n\nI found {company} and noticed you might benefit from a stronger online presence. Most customers search online before making decisions.\n\nI help local businesses like yours stand out through professional {skills}.\n\nWould you be open to a free 15-minute consultation?\n\nBest,\n{name}\n{portfolio}'},
+  {name:'Domain Expiry Hook',subj:"Your domain is expiring soon",body:"Hi there,\n\nI noticed {company}'s domain is expiring very soon. If it lapses, your website goes offline.\n\nThis is the perfect time to refresh your entire online presence. I specialise in {skills}.\n\nHappy to jump on a quick call this week?\n\nBest,\n{name}\n{portfolio}"},
+  {name:'Social DM',subj:'Saw your post — I can help',body:"Hi there,\n\nI saw your post and wanted to reach out — I specialise in exactly what you're looking for.\n\nI've helped several businesses in similar situations. Would love to show you what I can do.\n\nBest,\n{name}\n{portfolio}"},
+  {name:'Agency Pitch',subj:'Partnership opportunity',body:"Hi there,\n\nI run {brand} and specialise in {skills}. I think there's a great opportunity for us to collaborate.\n\nWhether a one-off project or ongoing partnership, I'd love to explore what we could build together.\n\nWould a quick call make sense?\n\nBest,\n{name}\n{portfolio}"},
 ];
 
-function useTemplate(idx) {
-  var t    = TEMPLATES[idx];
-  var lead = leads.find(function(l){return l.id===composeLeadId;});
-  var co   = lead ? lead.name : 'your company';
-  var subj = t.subj.replace(/\{company\}/g,co).replace(/\{brand\}/g,userBrand).replace(/\{name\}/g,userName).replace(/\{skills\}/g,userSkills).replace(/\{portfolio\}/g,userPortfolio);
-  var body = t.body.replace(/\{company\}/g,co).replace(/\{brand\}/g,userBrand).replace(/\{name\}/g,userName).replace(/\{skills\}/g,userSkills).replace(/\{portfolio\}/g,userPortfolio);
-  genSubject = subj; genBody = body;
-  var si = document.getElementById('subjInput');
-  var bi = document.getElementById('bodyInput');
-  if (si) si.value = subj;
-  if (bi) bi.value = body;
-  showToast('Template loaded!');
+function useTemplate(idx){
+  var t=TEMPLATES[idx],lead=leads.find(function(l){return l.id===composeLeadId;}),co=lead?lead.name:'your company';
+  function fill(s){return s.replace(/\{company\}/g,co).replace(/\{brand\}/g,userBrand).replace(/\{name\}/g,userName).replace(/\{skills\}/g,userSkills).replace(/\{portfolio\}/g,userPortfolio);}
+  genSubject=fill(t.subj);genBody=fill(t.body);
+  var si=document.getElementById('subjInput'),bi=document.getElementById('bodyInput');
+  if(si)si.value=genSubject;if(bi)bi.value=genBody;showToast('Template loaded!');
 }
 
-function switchTab(t) {
-  currentTab = t;
-  ['compose','history'].forEach(function(x){
-    document.getElementById('tab-'+x).classList.toggle('active', x===t);
-    document.getElementById(x+'-pane').style.display = x===t ? '' : 'none';
-  });
+function switchTab(t){currentTab=t;['compose','history'].forEach(function(x){document.getElementById('tab-'+x).classList.toggle('active',x===t);document.getElementById(x+'-pane').style.display=x===t?'':'none';});}
+function setTone(t){currentTone=t;['professional','friendly','bold'].forEach(function(x){var el=document.getElementById('tone-'+x);if(el)el.classList.toggle('active',x===t);});}
+
+function renderOutreach(){
+  var lead=leads.find(function(l){return l.id===composeLeadId;})||null;
+  document.getElementById('compose-pane').innerHTML=
+    '<div style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-crosshairs"></i> Select lead (optional)</span><button class="btn btn-sm" onclick="composeLeadId=null;genSubject=\'\';genBody=\'\';renderOutreach()" style="font-size:11px;padding:3px 10px"><i class="fa-solid fa-pen"></i> Manual email</button></div>'+
+    '<select style="width:100%;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit" onchange="composeLeadId=parseInt(this.value)||null;genSubject=\'\';genBody=\'\';renderOutreach()"><option value="">— No lead selected (manual email) —</option>'+leads.map(function(l){return'<option value="'+l.id+'"'+(l.id===composeLeadId?' selected':'')+'>'+l.name+' — '+l.src+' · Score '+l.score+'</option>';}).join('')+'</select></div>'+
+    (lead?'<div class="ai-banner"><i class="fa-solid fa-wand-magic-sparkles" style="font-size:20px;color:var(--a);flex-shrink:0;margin-top:2px"></i><div class="ai-text">AI will write a personalised email for <strong>'+lead.name+'</strong> · '+lead.src+' · Score '+lead.score+' · '+lead.budget+'</div></div>':'')+
+    '<div style="display:flex;gap:8px;margin-bottom:18px;align-items:center;flex-wrap:wrap"><span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-sliders"></i> Tone:</span>'+['professional','friendly','bold'].map(function(t){return'<div class="pill'+(currentTone===t?' active':'')+'" id="tone-'+t+'" onclick="setTone(\''+t+'\')">'+(t.charAt(0).toUpperCase()+t.slice(1))+'</div>';}).join('')+(lead?'<button class="btn btn-primary btn-sm" id="genBtn" onclick="generateEmail()" style="margin-left:auto"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI</button>':'')+'</div>'+
+    '<div class="composer"><div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-at"></i> To</span><input class="comp-input" id="toInput" value="'+(lead?lead.email||'':'')+'" placeholder="Enter recipient email e.g. client@example.com"></div><div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-heading"></i> Re</span><input class="comp-input" id="subjInput" value="'+genSubject+'" placeholder="Email subject line"></div><textarea class="comp-ta" id="bodyInput" placeholder="'+(lead?'Click Generate with AI above, or type manually':'Type your email here')+'">'+(genBody||'')+'</textarea><div class="comp-footer"><button class="btn btn-primary btn-sm" onclick="sendEmail()"><i class="fa-solid fa-paper-plane"></i> Send Email</button><button class="btn btn-sm" onclick="sendTestEmail()"><i class="fa-solid fa-flask"></i> Test to Me</button></div></div>';
+
+  document.getElementById('history-pane').innerHTML=outreach.length===0?'<div class="empty"><div class="empty-icon"><i class="fa-solid fa-inbox"></i></div><h3>No emails sent yet</h3><p>Send your first email</p></div>':outreach.map(function(o){var l=leads.find(function(x){return x.id===o.leadId;});return'<div class="hcard"><div style="display:flex;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:8px"><span style="font-size:14px;font-weight:700;color:var(--t1)">'+(l?l.name:o.to)+'</span><span style="font-size:12px;color:var(--t3)">'+o.sentAt+'</span></div><div style="font-size:13px;color:var(--t2);margin-bottom:10px">'+o.subj+'</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="htag" style="background:var(--okb);color:var(--ok)"><i class="fa-solid fa-check"></i> Sent</span>'+(o.openedAt?'<span class="htag" style="background:#DBEAFE;color:#1D4ED8"><i class="fa-solid fa-eye"></i> Opened</span>':'')+(o.repliedAt?'<span class="htag" style="background:var(--al);color:var(--a)"><i class="fa-solid fa-reply"></i> Replied</span>':'<span class="htag" style="background:var(--wnb);color:var(--wn)"><i class="fa-solid fa-clock"></i> Awaiting</span>')+'</div></div>';}).join('');
+  document.getElementById('tab-history').innerHTML='<i class="fa-solid fa-clock-rotate-left"></i> History ('+outreach.length+')';
+
+  document.getElementById('seq-panel').innerHTML='<div class="sec-title"><i class="fa-solid fa-list-check"></i> Follow-up Sequence</div>'+[{day:'Day 0',l:'Initial email',s:'Send on first contact',done:true},{day:'Day 3',l:'Soft follow-up',s:'2-sentence check-in',done:false},{day:'Day 7',l:'Add value',s:'Share a portfolio piece',done:false},{day:'Day 14',l:'Final check-in',s:'Last email, leave door open',done:false}].map(function(s,i){return'<div class="seq-item"><div class="seq-circle '+(s.done?'seq-done':'seq-todo')+'">'+(s.done?'<i class="fa-solid fa-check"></i>':i+1)+'</div><div><div style="font-size:13px;font-weight:700;color:var(--t1)">'+s.day+' — '+s.l+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px">'+s.s+'</div></div></div>';}).join('')+'<div style="border-top:1px solid var(--bd);padding-top:18px;margin-top:6px"><div class="sec-title"><i class="fa-solid fa-rectangle-list"></i> Templates</div>'+TEMPLATES.map(function(t,i){return'<div class="tmpl-row"><span class="tmpl-name">'+t.name+'</span><button class="btn btn-sm" onclick="useTemplate('+i+')"><i class="fa-solid fa-wand"></i> Use</button></div>';}).join('')+'</div>';
 }
 
-function setTone(t) {
-  currentTone = t;
-  ['professional','friendly','bold'].forEach(function(x){
-    var el = document.getElementById('tone-'+x);
-    if (el) el.classList.toggle('active', x===t);
-  });
+async function generateEmail(){
+  var lead=leads.find(function(l){return l.id===composeLeadId;});if(!lead)return showToast('Select a lead first','error');
+  var btn=document.getElementById('genBtn');if(btn){btn.innerHTML='<span class="spinner"></span> Writing…';btn.disabled=true;}
+  genSubject='';genBody='';
+  var prompt='You are '+userName+' from '+userBrand+'. Skills: '+userSkills+'. Portfolio: '+userPortfolio+'.\nWrite a personalised cold outreach email:\n- Company: '+lead.name+'\n- Need: '+lead.desc+'\n- Source: '+lead.src+'\n- Industry: '+lead.ind+'\n- Budget: '+lead.budget+'\nTone: '+(currentTone==='professional'?'Professional and concise':currentTone==='friendly'?'Warm and conversational':'Confident and bold')+'\nRules: 3-4 short paragraphs, specific opener about their business, one concrete result for similar clients, soft CTA (15-min call), sign off as '+userName+'.\nRespond ONLY with valid JSON: {"subject":"...","body":"..."}';
+  try{
+    if(API_BASE){var res=await fetch(API_BASE+'/api/outreach/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:lead.id,tone:currentTone,sender:{name:userName,skills:userSkills,portfolioUrl:userPortfolio}})});var data=await res.json();genSubject=data.subject||'';genBody=data.body||'';}
+    else{var r2=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:900,messages:[{role:'user',content:prompt}]})});var d2=await r2.json();var txt=(d2.content&&d2.content[0]&&d2.content[0].text)||'{}';var p=JSON.parse(txt.replace(/```json|```/g,'').trim());genSubject=p.subject||'';genBody=p.body||'';}
+  }catch(e){genSubject='Quick question about '+lead.name;genBody='Hi there,\n\nI came across '+lead.name+" and noticed a great opportunity. I'm "+userName+' — I specialise in '+userSkills+'.\n\nI recently helped a similar '+lead.ind+' business increase their results significantly.\n\nWould a quick 15-minute call work this week?\n\nBest,\n'+userName+'\n'+userPortfolio;}
+  if(btn){btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI';btn.disabled=false;}
+  var si=document.getElementById('subjInput'),bi=document.getElementById('bodyInput');if(si)si.value=genSubject;if(bi)bi.value=genBody;
 }
 
-function renderOutreach() {
-  var lead = leads.find(function(l){return l.id===composeLeadId;}) || null;
-
-  // Compose pane
-  document.getElementById('compose-pane').innerHTML =
-    '<div style="margin-bottom:18px">'+
-    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">'+
-    '<span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-crosshairs"></i> Select lead (optional)</span>'+
-    '<button class="btn btn-sm" onclick="composeLeadId=null;genSubject=\'\';genBody=\'\';renderOutreach()" style="font-size:11px;padding:3px 10px"><i class="fa-solid fa-pen"></i> Manual email</button>'+
-    '</div>'+
-    '<select style="width:100%;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg2);color:var(--t1);font-size:13px;font-family:inherit" onchange="composeLeadId=parseInt(this.value)||null;genSubject=\'\';genBody=\'\';renderOutreach()">'+
-    '<option value="">— No lead selected (manual email) —</option>'+
-    leads.map(function(l){return '<option value="'+l.id+'"'+(l.id===composeLeadId?' selected':'')+'>'+l.name+' — '+l.src+' · Score '+l.score+'</option>';}).join('')+
-    '</select></div>'+
-    (lead ? '<div class="ai-banner"><i class="fa-solid fa-wand-magic-sparkles" style="font-size:20px;color:var(--a);flex-shrink:0;margin-top:2px"></i><div class="ai-text">AI will write a personalised email for <strong>'+lead.name+'</strong> · '+lead.src+' · Score '+lead.score+' · '+lead.budget+'</div></div>' : '')+
-    '<div style="display:flex;gap:8px;margin-bottom:18px;align-items:center;flex-wrap:wrap">'+
-    '<span style="font-size:12px;color:var(--t3);font-weight:700"><i class="fa-solid fa-sliders"></i> Tone:</span>'+
-    ['professional','friendly','bold'].map(function(t){return '<div class="pill'+(currentTone===t?' active':'')+'" id="tone-'+t+'" onclick="setTone(\''+t+'\')">'+(t.charAt(0).toUpperCase()+t.slice(1))+'</div>';}).join('')+
-    (lead ? '<button class="btn btn-primary btn-sm" id="genBtn" onclick="generateEmail()" style="margin-left:auto"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI</button>' : '')+
-    '</div>'+
-    '<div class="composer">'+
-    '<div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-at"></i> To</span><input class="comp-input" id="toInput" value="'+(lead?lead.email||'':'')+'" placeholder="Enter recipient email e.g. client@example.com"></div>'+
-    '<div class="comp-row"><span class="comp-lbl"><i class="fa-solid fa-heading"></i> Re</span><input class="comp-input" id="subjInput" value="'+genSubject+'" placeholder="Email subject line"></div>'+
-    '<textarea class="comp-ta" id="bodyInput" placeholder="'+(lead?'Click Generate with AI above, or type manually':'Type your email here')+'">'+(genBody||'')+'</textarea>'+
-    '<div class="comp-footer">'+
-    '<button class="btn btn-primary btn-sm" onclick="sendEmail()"><i class="fa-solid fa-paper-plane"></i> Send Email</button>'+
-    '<button class="btn btn-sm" onclick="sendTestEmail()"><i class="fa-solid fa-flask"></i> Test to Me</button>'+
-    '</div></div>';
-
-  // History pane
-  document.getElementById('history-pane').innerHTML = outreach.length===0
-    ? '<div class="empty"><div class="empty-icon"><i class="fa-solid fa-inbox"></i></div><h3>No emails sent yet</h3><p>Send your first email to a lead</p></div>'
-    : outreach.map(function(o){
-        var l = leads.find(function(x){return x.id===o.leadId;});
-        return '<div class="hcard">'+
-          '<div style="display:flex;justify-content:space-between;margin-bottom:7px;flex-wrap:wrap;gap:8px"><span style="font-size:14px;font-weight:700;color:var(--t1)">'+(l?l.name:o.to)+'</span><span style="font-size:12px;color:var(--t3)">'+o.sentAt+'</span></div>'+
-          '<div style="font-size:13px;color:var(--t2);margin-bottom:10px">'+o.subj+'</div>'+
-          '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
-          '<span class="htag" style="background:var(--okb);color:var(--ok)"><i class="fa-solid fa-check"></i> Sent</span>'+
-          (o.openedAt?'<span class="htag" style="background:#DBEAFE;color:#1D4ED8"><i class="fa-solid fa-eye"></i> Opened</span>':'')+
-          (o.repliedAt?'<span class="htag" style="background:var(--al);color:var(--a)"><i class="fa-solid fa-reply"></i> Replied</span>':'<span class="htag" style="background:var(--wnb);color:var(--wn)"><i class="fa-solid fa-clock"></i> Awaiting</span>')+
-          '</div></div>';
-      }).join('');
-
-  document.getElementById('tab-history').innerHTML = '<i class="fa-solid fa-clock-rotate-left"></i> History ('+outreach.length+')';
-
-  // Sequence + Templates panel
-  document.getElementById('seq-panel').innerHTML =
-    '<div class="sec-title"><i class="fa-solid fa-list-check"></i> Follow-up Sequence</div>'+
-    [{day:'Day 0',l:'Initial email',s:'Send on first contact',done:true},
-     {day:'Day 3',l:'Soft follow-up',s:'2-sentence check-in',done:false},
-     {day:'Day 7',l:'Add value',s:'Share a portfolio piece',done:false},
-     {day:'Day 14',l:'Final check-in',s:'Last email, leave door open',done:false}
-    ].map(function(s,i){
-      return '<div class="seq-item"><div class="seq-circle '+(s.done?'seq-done':'seq-todo')+'">'+(s.done?'<i class="fa-solid fa-check"></i>':i+1)+'</div><div><div style="font-size:13px;font-weight:700;color:var(--t1)">'+s.day+' — '+s.l+'</div><div style="font-size:11px;color:var(--t3);margin-top:3px">'+s.s+'</div></div></div>';
-    }).join('')+
-    '<div style="border-top:1px solid var(--bd);padding-top:18px;margin-top:6px">'+
-    '<div class="sec-title"><i class="fa-solid fa-rectangle-list"></i> Templates</div>'+
-    TEMPLATES.map(function(t,i){
-      return '<div class="tmpl-row"><span class="tmpl-name">'+t.name+'</span><button class="btn btn-sm" onclick="useTemplate('+i+')"><i class="fa-solid fa-wand"></i> Use</button></div>';
-    }).join('')+'</div>';
-}
-
-async function generateEmail() {
-  var lead = leads.find(function(l){return l.id===composeLeadId;});
-  if (!lead) return showToast('Select a lead first','error');
-  var btn = document.getElementById('genBtn');
-  if (btn) { btn.innerHTML='<span class="spinner"></span> Writing…'; btn.disabled=true; }
-  genSubject=''; genBody='';
-
-  var prompt = 'You are '+userName+' from '+userBrand+'. Skills: '+userSkills+'. Portfolio: '+userPortfolio+'.\nWrite a personalised cold outreach email:\n- Company: '+lead.name+'\n- Need: '+lead.desc+'\n- Source: '+lead.src+'\n- Industry: '+lead.ind+'\n- Budget: '+lead.budget+'\nTone: '+(currentTone==='professional'?'Professional and concise':currentTone==='friendly'?'Warm and conversational':'Confident and bold')+'\nRules: 3-4 short paragraphs, specific opener about their business, one concrete result for similar clients, soft CTA (15-min call), sign off as '+userName+'.\nRespond ONLY with valid JSON: {"subject":"...","body":"..."}';
-
-  try {
-    if (API_BASE) {
-      var res  = await fetch(API_BASE+'/api/outreach/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:lead.id,tone:currentTone,sender:{name:userName,skills:userSkills,portfolioUrl:userPortfolio}})});
-      var data = await res.json();
-      genSubject=data.subject||''; genBody=data.body||'';
-    } else {
-      var res2  = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:900,messages:[{role:'user',content:prompt}]})});
-      var data2 = await res2.json();
-      var txt   = (data2.content&&data2.content[0]&&data2.content[0].text)||'{}';
-      var p     = JSON.parse(txt.replace(/```json|```/g,'').trim());
-      genSubject=p.subject||''; genBody=p.body||'';
-    }
-  } catch(e) {
-    genSubject='Quick question about '+lead.name+"'s online presence";
-    genBody='Hi there,\n\nI came across '+lead.name+" and noticed a great opportunity. I'm "+userName+" — I specialise in "+userSkills+'.\n\nI recently helped a similar '+lead.ind+' business increase their enquiries by 45% through better online presence.\n\nWould a quick 15-minute call work this week?\n\nBest,\n'+userName+'\n'+userPortfolio;
-  }
-
-  if (btn) { btn.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> Generate with AI'; btn.disabled=false; }
-  var si=document.getElementById('subjInput'), bi=document.getElementById('bodyInput');
-  if (si) si.value=genSubject; if (bi) bi.value=genBody;
-}
-
-function sendEmail() {
-  var bi=document.getElementById('bodyInput'), si=document.getElementById('subjInput'), ti=document.getElementById('toInput');
-  if (!bi||!bi.value.trim()) return showToast('Write or generate an email body first','error');
-  var to = ti&&ti.value.trim();
-  if (!to) return showToast('Enter a recipient email address in the To field','error');
-  var lead = leads.find(function(l){return l.id===composeLeadId;})||null;
+function sendEmail(){
+  var bi=document.getElementById('bodyInput'),si=document.getElementById('subjInput'),ti=document.getElementById('toInput');
+  if(!bi||!bi.value.trim())return showToast('Write or generate an email body first','error');
+  var to=ti&&ti.value.trim();if(!to)return showToast('Enter a recipient email in the To field','error');
+  var lead=leads.find(function(l){return l.id===composeLeadId;})||null;
   var entry={id:Date.now(),leadId:lead?lead.id:null,to:to,subj:(si&&si.value)||'(no subject)',body:bi.value,sentAt:new Date().toISOString().split('T')[0],openedAt:null,repliedAt:null};
-  outreach=[entry].concat(outreach);
-  if (lead) leads=leads.map(function(l){return l.id===lead.id?Object.assign({},l,{status:'Contacted'}):l;});
-  if (API_BASE) {
-    fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:entry.leadId,to:to,subject:entry.subj,body:entry.body})})
-    .then(function(r){return r.json();})
-    .then(function(d){if(d.success)showToast('Email sent to '+to+' ✅');else showToast('Send failed: '+(d.error||'check logs'),'error');})
-    .catch(function(e){showToast('Error: '+e.message,'error');});
-  } else { showToast('Demo mode — connect backend to send real emails','info'); }
-  genSubject=''; genBody=''; updateBadges(); switchTab('history'); renderOutreach();
+  outreach=[entry].concat(outreach);if(lead)leads=leads.map(function(l){return l.id===lead.id?Object.assign({},l,{status:'Contacted'}):l;});
+  if(API_BASE){fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lead_id:entry.leadId,to:to,subject:entry.subj,body:entry.body})}).then(function(r){return r.json();}).then(function(d){if(d.success)showToast('Email sent to '+to+' ✅');else showToast('Send failed: '+(d.error||'check Logs page'),'error');}).catch(function(e){showToast('Error: '+e.message,'error');});}
+  else showToast('Demo mode — connect backend to send real emails','info');
+  genSubject='';genBody='';updateBadges();switchTab('history');renderOutreach();
 }
 
-function sendTestEmail() {
-  var myEmail = localStorage.getItem('ch_email') || '';
-  if (!myEmail) {
-    myEmail = prompt('Enter your email address to receive the test:');
-    if (!myEmail) return;
-    localStorage.setItem('ch_email', myEmail);
-  }
-  var bi=document.getElementById('bodyInput'), si=document.getElementById('subjInput');
-  var body = (bi&&bi.value) || 'This is a test email from Client Hunter.';
-  var subj = '[TEST] ' + ((si&&si.value)||'Client Hunter Email Test');
-  if (!API_BASE) return showToast('Connect your backend first','error');
-  fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({to:myEmail,subject:subj,body:body})})
-  .then(function(r){return r.json();})
-  .then(function(d){if(d.success)showToast('Test email sent to '+myEmail+' ✅');else showToast('Failed: '+(d.error||'unknown'),'error');})
-  .catch(function(e){showToast('Error: '+e.message,'error');});
+function sendTestEmail(){
+  var myEmail=localStorage.getItem('ch_email')||'';
+  if(!myEmail){myEmail=prompt('Enter your email to receive the test:');if(!myEmail)return;localStorage.setItem('ch_email',myEmail);}
+  var bi=document.getElementById('bodyInput'),si=document.getElementById('subjInput');
+  var body=(bi&&bi.value)||'This is a test email from Client Hunter. If you received this, email sending is working!';
+  var subj='[TEST] '+(si&&si.value?si.value:'Client Hunter Email Test');
+  if(!API_BASE)return showToast('Connect your backend first','error');
+  fetch(API_BASE+'/api/outreach/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({to:myEmail,subject:subj,body:body})}).then(function(r){return r.json();}).then(function(d){if(d.success)showToast('Test email sent to '+myEmail+' ✅ — check your inbox');else showToast('Failed: '+(d.error||'check Logs'),'error');}).catch(function(e){showToast('Error: '+e.message,'error');});
 }
 
-// ── Analytics ──────────────────────────────────────────────────────
-function renderAnalytics() {
-  var sent=outreach.length, opened=outreach.filter(function(o){return o.openedAt;}).length;
-  var replied=outreach.filter(function(o){return o.repliedAt;}).length, closed=leads.filter(function(l){return l.status==='Closed';}).length;
-  document.getElementById('analyticsStats').innerHTML=[
-    {icon:'fa-paper-plane',col:'#7C3AED',bg:'#EDE9FE',lbl:'Emails Sent',  v:sent},
-    {icon:'fa-eye',        col:'#1D4ED8',bg:'#DBEAFE',lbl:'Open Rate',    v:sent?Math.round((opened/sent)*100)+'%':'—'},
-    {icon:'fa-reply',      col:'#059669',bg:'#D1FAE5',lbl:'Reply Rate',   v:sent?Math.round((replied/sent)*100)+'%':'—'},
-    {icon:'fa-handshake',  col:'#D97706',bg:'#FEF3C7',lbl:'Deals Closed', v:closed},
-  ].map(function(s){return '<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div></div>';}).join('');
-
-  var bySrc=leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});
-  var byStatus=['New','Contacted','Negotiating','Closed'].map(function(s){return{l:s,v:leads.filter(function(x){return x.status===s;}).length};});
-  var mxS=Math.max.apply(null,Object.values(bySrc).concat([1]));
-  var mxSt=Math.max.apply(null,byStatus.map(function(s){return s.v;}).concat([1]));
-  var stC=['#1D4ED8','#D97706','#7C3AED','#059669'];
-  function bars(rows){return rows.map(function(r){return '<div class="bar-row"><span class="bar-lbl">'+r.l+'</span><div class="bar-track"><div class="bar-fill" style="width:'+r.p+'%;background:'+r.c+'"><span>'+r.v+'</span></div></div></div>';}).join('');}
-  document.getElementById('analyticsCharts').innerHTML=
-    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-chart-bar" style="color:var(--a)"></i>Leads by Source</div>'+(Object.keys(bySrc).length===0?'<p style="color:var(--t3);font-size:13px">Run a scan to see data</p>':bars(Object.entries(bySrc).map(function(e){return{l:e[0],v:e[1],p:Math.round((e[1]/mxS)*100),c:srcColors[e[0]]||'var(--a)'};})))+'</div>'+
-    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-filter" style="color:var(--wn)"></i>Pipeline Funnel</div>'+bars(byStatus.map(function(s,i){return{l:s.l,v:s.v,p:Math.round((s.v/mxSt)*100),c:stC[i]};}))+'</div>'+
-    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-envelope-open-text" style="color:#1D4ED8"></i>Email Performance</div>'+bars([{l:'Sent',v:sent,p:100,c:'var(--a)'},{l:'Opened',v:opened,p:sent?Math.round((opened/sent)*100):0,c:'#1D4ED8'},{l:'Replied',v:replied,p:sent?Math.round((replied/sent)*100):0,c:'#059669'}])+'</div>'+
-    '<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-trophy" style="color:var(--wn)"></i>Top Leads by Score</div>'+(leads.length===0?'<p style="color:var(--t3);font-size:13px">No leads yet</p>':[].concat(leads).sort(function(a,b){return b.score-a.score;}).slice(0,5).map(function(l){return '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)">'+mkAv(initials(l.name),getAvc(l.id),28)+'<span style="flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+l.name+'</span>'+mkScore(l.score)+'</div>';}).join(''))+'</div>';
+function renderAnalytics(){
+  var sent=outreach.length,opened=outreach.filter(function(o){return o.openedAt;}).length,replied=outreach.filter(function(o){return o.repliedAt;}).length,closed=leads.filter(function(l){return l.status==='Closed';}).length;
+  document.getElementById('analyticsStats').innerHTML=[{icon:'fa-paper-plane',col:'#7C3AED',bg:'#EDE9FE',lbl:'Emails Sent',v:sent},{icon:'fa-eye',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Open Rate',v:sent?Math.round((opened/sent)*100)+'%':'—'},{icon:'fa-reply',col:'#059669',bg:'#D1FAE5',lbl:'Reply Rate',v:sent?Math.round((replied/sent)*100)+'%':'—'},{icon:'fa-handshake',col:'#D97706',bg:'#FEF3C7',lbl:'Deals Closed',v:closed}].map(function(s){return'<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val">'+s.v+'</div></div>';}).join('');
+  var bySrc=leads.reduce(function(a,l){a[l.src]=(a[l.src]||0)+1;return a;},{});var byStatus=['New','Contacted','Negotiating','Closed'].map(function(s){return{l:s,v:leads.filter(function(x){return x.status===s;}).length};});var mxS=Math.max.apply(null,Object.values(bySrc).concat([1])),mxSt=Math.max.apply(null,byStatus.map(function(s){return s.v;}).concat([1])),stC=['#1D4ED8','#D97706','#7C3AED','#059669'];
+  function bars(rows){return rows.map(function(r){return'<div class="bar-row"><span class="bar-lbl">'+r.l+'</span><div class="bar-track"><div class="bar-fill" style="width:'+r.p+'%;background:'+r.c+'"><span>'+r.v+'</span></div></div></div>';}).join('');}
+  document.getElementById('analyticsCharts').innerHTML='<div class="chart-card"><div class="chart-title"><i class="fa-solid fa-chart-bar" style="color:var(--a)"></i>Leads by Source</div>'+(Object.keys(bySrc).length===0?'<p style="color:var(--t3);font-size:13px">Run a scan to see data</p>':bars(Object.entries(bySrc).map(function(e){return{l:e[0],v:e[1],p:Math.round((e[1]/mxS)*100),c:srcColors[e[0]]||'var(--a)'};})))+'</div><div class="chart-card"><div class="chart-title"><i class="fa-solid fa-filter" style="color:var(--wn)"></i>Pipeline Funnel</div>'+bars(byStatus.map(function(s,i){return{l:s.l,v:s.v,p:Math.round((s.v/mxSt)*100),c:stC[i]};}))+'</div><div class="chart-card"><div class="chart-title"><i class="fa-solid fa-envelope-open-text" style="color:#1D4ED8"></i>Email Performance</div>'+bars([{l:'Sent',v:sent,p:100,c:'var(--a)'},{l:'Opened',v:opened,p:sent?Math.round((opened/sent)*100):0,c:'#1D4ED8'},{l:'Replied',v:replied,p:sent?Math.round((replied/sent)*100):0,c:'#059669'}])+'</div><div class="chart-card"><div class="chart-title"><i class="fa-solid fa-trophy" style="color:var(--wn)"></i>Top Leads by Score</div>'+(leads.length===0?'<p style="color:var(--t3);font-size:13px">No leads yet</p>':[].concat(leads).sort(function(a,b){return b.score-a.score;}).slice(0,5).map(function(l){return'<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)">'+mkAv(initials(l.name),getAvc(l.id),28)+'<span style="flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+l.name+'</span>'+mkScore(l.score)+'</div>';}).join(''))+'</div>';
 }
 
-// ── Logs ───────────────────────────────────────────────────────────
-async function loadLogs() {
-  if (!API_BASE) { showToast('Connect backend first','error'); return; }
-  try {
-    var res  = await fetch(API_BASE+'/api/logs');
-    var data = await res.json();
-    var env  = (data.system&&data.system.env)||{};
-    var db   = data.database||{};
-    document.getElementById('sysInfo').innerHTML=
-      '<div class="stat-grid" style="margin-bottom:16px">'+
-      [{icon:'fa-server',col:'#059669',bg:'#D1FAE5',lbl:'Uptime',v:(data.system&&data.system.uptime)||'—'},
-       {icon:'fa-database',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Total Leads',v:db.totalLeads||0},
-       {icon:'fa-memory',col:'#D97706',bg:'#FEF3C7',lbl:'Memory',v:(data.system&&data.system.memory)||'—'},
-       {icon:'fa-paper-plane',col:'#7C3AED',bg:'#EDE9FE',lbl:'Emails Sent',v:db.totalOutreach||0}
-      ].map(function(s){return '<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val" style="font-size:20px">'+s.v+'</div></div>';}).join('')+'</div>'+
-      '<div class="settings-block" style="margin-bottom:16px"><div style="padding:14px 18px;border-bottom:1px solid var(--bd);font-size:13px;font-weight:700;color:var(--t1)"><i class="fa-solid fa-key"></i> API Keys Status</div>'+
-      Object.entries(env).map(function(e){var ok=e[1].includes('✅');return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--t2)">'+e[0]+'</span><span style="font-size:12px;font-weight:700;color:'+(ok?'var(--ok)':'var(--er)')+'">'+e[1]+'</span></div>';}).join('')+'</div>';
-    var scans=(data.recentScans||[]);
-    var logs=(data.recentLogs||[]);
-    document.getElementById('logsContent').innerHTML=
-      (scans.length>0?'<div class="sec-title"><i class="fa-solid fa-radar"></i> Recent Scans</div>'+scans.map(function(s){return '<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;background:var(--card)"><i class="fa-solid fa-'+(s.status==='success'?'circle-check" style="color:var(--ok)':'circle-xmark" style="color:var(--er)')+'"></i><span style="font-size:13px;font-weight:600;color:var(--t1);flex:1">'+s.source+'</span><span style="font-size:12px;color:var(--ok);font-weight:700">'+s.leads_found+' leads</span><span style="font-size:11px;color:var(--t3)">'+((s.scanned_at||'').replace('T',' ').substring(0,16))+'</span></div>';}).join(''):'<p style="color:var(--t3);font-size:13px;margin-bottom:16px">No scans yet — run a scan first</p>')+
-      (logs.length>0?'<div class="sec-title" style="margin-top:16px"><i class="fa-solid fa-file-lines"></i> Server Logs</div><div style="background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;font-family:monospace;font-size:11px;line-height:1.8;max-height:400px;overflow-y:auto">'+logs.map(function(l){var col=l.includes('ERROR')?'var(--er)':l.includes('WARN')?'var(--wn)':'var(--t2)';return '<div style="color:'+col+'">'+l+'</div>';}).join('')+'</div>':'');
-  } catch(e) { showToast('Could not load logs: '+e.message,'error'); }
+async function loadLogs(){
+  if(!API_BASE){showToast('Connect backend first','error');return;}
+  try{
+    var res=await fetch(API_BASE+'/api/logs'),data=await res.json(),env=(data.system&&data.system.env)||{},db=data.database||{};
+    document.getElementById('sysInfo').innerHTML='<div class="stat-grid" style="margin-bottom:16px">'+[{icon:'fa-server',col:'#059669',bg:'#D1FAE5',lbl:'Uptime',v:(data.system&&data.system.uptime)||'—'},{icon:'fa-database',col:'#1D4ED8',bg:'#DBEAFE',lbl:'Total Leads',v:db.totalLeads||0},{icon:'fa-memory',col:'#D97706',bg:'#FEF3C7',lbl:'Memory',v:(data.system&&data.system.memory)||'—'},{icon:'fa-paper-plane',col:'#7C3AED',bg:'#EDE9FE',lbl:'Emails Sent',v:db.totalOutreach||0}].map(function(s){return'<div class="stat-card"><div class="stat-icon-wrap" style="background:'+s.bg+';color:'+s.col+'"><i class="fa-solid '+s.icon+'"></i></div><div class="stat-label">'+s.lbl+'</div><div class="stat-val" style="font-size:20px">'+s.v+'</div></div>';}).join('')+'</div>'+'<div class="settings-block" style="margin-bottom:16px"><div style="padding:14px 18px;border-bottom:1px solid var(--bd);font-size:13px;font-weight:700;color:var(--t1)"><i class="fa-solid fa-key"></i> API Keys Status</div>'+Object.entries(env).map(function(e){var ok=e[1].includes('✅');return'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--t2)">'+e[0]+'</span><span style="font-size:12px;font-weight:700;color:'+(ok?'var(--ok)':'var(--er)')+'">'+e[1]+'</span></div>';}).join('')+'</div>';
+    var scans=data.recentScans||[],logs=data.recentLogs||[];
+    document.getElementById('logsContent').innerHTML=(scans.length>0?'<div class="sec-title"><i class="fa-solid fa-radar"></i> Recent Scans</div>'+scans.map(function(s){return'<div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;background:var(--card)"><i class="fa-solid fa-'+(s.status==='success'?'circle-check" style="color:var(--ok)':'circle-xmark" style="color:var(--er)')+'"></i><span style="font-size:13px;font-weight:600;color:var(--t1);flex:1">'+s.source+'</span><span style="font-size:12px;color:var(--ok);font-weight:700">'+s.leads_found+' leads</span><span style="font-size:11px;color:var(--t3)">'+((s.scanned_at||'').replace('T',' ').substring(0,16))+'</span></div>';}).join(''):'<p style="color:var(--t3);font-size:13px;margin-bottom:16px">No scans yet</p>')+(logs.length>0?'<div class="sec-title" style="margin-top:16px"><i class="fa-solid fa-file-lines"></i> Server Logs</div><div style="background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px;font-family:monospace;font-size:11px;line-height:1.8;max-height:400px;overflow-y:auto">'+logs.map(function(l){var col=l.includes('ERROR')?'var(--er)':l.includes('WARN')?'var(--wn)':'var(--t2)';return'<div style="color:'+col+'">'+l+'</div>';}).join('')+'</div>':'');
+  }catch(e){showToast('Could not load logs: '+e.message,'error');}
 }
 
-async function loadErrors() {
-  if (!API_BASE) return showToast('Connect backend first','error');
-  try {
-    var res=await fetch(API_BASE+'/api/logs/errors'); var data=await res.json();
-    var el=document.getElementById('logsContent');
-    if (!data.errors||!data.errors.length) { el.innerHTML='<div class="empty"><div class="empty-icon"><i class="fa-solid fa-circle-check" style="color:var(--ok)"></i></div><h3>No errors!</h3><p>Everything is running clean</p></div>'; return; }
-    el.innerHTML='<div class="sec-title" style="color:var(--er)"><i class="fa-solid fa-circle-xmark"></i> Recent Errors</div>'+data.errors.map(function(e){return '<div style="background:var(--erb);border:1px solid var(--er);border-radius:var(--r);padding:10px 14px;margin-bottom:8px;font-size:12px;color:var(--er);font-family:monospace;word-break:break-all">'+e+'</div>';}).join('');
-  } catch(e) { showToast('Could not load errors','error'); }
+async function loadErrors(){
+  if(!API_BASE)return showToast('Connect backend first','error');
+  try{var res=await fetch(API_BASE+'/api/logs/errors');var data=await res.json();var el=document.getElementById('logsContent');if(!data.errors||!data.errors.length){el.innerHTML='<div class="empty"><div class="empty-icon"><i class="fa-solid fa-circle-check" style="color:var(--ok)"></i></div><h3>No errors!</h3><p>Everything is running clean</p></div>';return;}el.innerHTML='<div class="sec-title" style="color:var(--er)"><i class="fa-solid fa-circle-xmark"></i> Recent Errors</div>'+data.errors.map(function(e){return'<div style="background:var(--erb);border:1px solid var(--er);border-radius:var(--r);padding:10px 14px;margin-bottom:8px;font-size:12px;color:var(--er);font-family:monospace;word-break:break-all">'+e+'</div>';}).join('');}catch(e){showToast('Could not load errors','error');}
 }
 
-// ── Settings ───────────────────────────────────────────────────────
-function saveSkill(val) {
-  currentSkill = val;
-  localStorage.setItem('ch_skill', val);
-  showToast('Skill updated!');
-}
+function saveSkill(val){currentSkill=val;localStorage.setItem('ch_skill',val);showToast('Skill updated!');}
+function saveProfile(){userName=document.getElementById('sName').value;userBrand=document.getElementById('sBrand').value;userSkills=document.getElementById('sSkills').value;userPortfolio=document.getElementById('sPortfolio').value;userEmail=document.getElementById('sEmail').value;localStorage.setItem('ch_name',userName);localStorage.setItem('ch_brand',userBrand);localStorage.setItem('ch_skills',userSkills);localStorage.setItem('ch_portfolio',userPortfolio);localStorage.setItem('ch_email',userEmail);showToast('Profile saved!');}
 
-function saveProfile() {
-  userName      = document.getElementById('sName').value;
-  userBrand     = document.getElementById('sBrand').value;
-  userSkills    = document.getElementById('sSkills').value;
-  userPortfolio = document.getElementById('sPortfolio').value;
-  userEmail     = document.getElementById('sEmail').value;
-  localStorage.setItem('ch_name',      userName);
-  localStorage.setItem('ch_brand',     userBrand);
-  localStorage.setItem('ch_skills',    userSkills);
-  localStorage.setItem('ch_portfolio', userPortfolio);
-  localStorage.setItem('ch_email',     userEmail);
-  showToast('Profile saved!');
-}
-
-function saveApiUrl() {
-  var url = (document.getElementById('apiUrlInput').value||'').trim().replace(/\/+$/,'');
-  if (!url) return showToast('Paste your Railway URL first','error');
+function saveApiUrl(){
+  var url=(document.getElementById('apiUrlInput').value||'').trim().replace(/\/+$/,'');if(!url)return showToast('Paste your Railway URL first','error');
   document.getElementById('apiStatus').innerHTML='<span class="spinner"></span> Connecting…';
-  fetch(url+'/api/health')
-    .then(function(r){return r.json();})
-    .then(function(data){
-      API_BASE=url; localStorage.setItem('ch_api',url);
-      document.getElementById('connDot').style.background='#059669';
-      document.getElementById('connLabel').textContent='Backend connected';
-      var active=Object.entries(data.apis||{}).filter(function(e){return e[1];}).map(function(e){return e[0];}).join(', ')||'none';
-      document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-check" style="color:var(--ok)"></i> Connected! Active APIs: '+active;
-      showToast('Backend connected!');
-      fetchLeads().then(function(){updateBadges();renderDashboard();});
-    })
-    .catch(function(){document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-xmark" style="color:var(--er)"></i> Could not connect — check your Railway URL';});
+  fetch(url+'/api/health').then(function(r){return r.json();}).then(function(data){
+    API_BASE=url;localStorage.setItem('ch_api',url);
+    document.getElementById('connDot').style.background='#059669';document.getElementById('connLabel').textContent='Backend connected';
+    var active=Object.entries(data.apis||{}).filter(function(e){return e[1];}).map(function(e){return e[0];}).join(', ')||'none';
+    document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-check" style="color:var(--ok)"></i> Connected! Active APIs: '+active;
+    showToast('Backend connected!');fetchLeads().then(function(){updateBadges();renderDashboard();});
+  }).catch(function(){document.getElementById('apiStatus').innerHTML='<i class="fa-solid fa-circle-xmark" style="color:var(--er)"></i> Could not connect — check your Railway URL';});
 }
 
-function renderSettings() {
-  var saved=localStorage.getItem('ch_api')||'';
-  if (saved) document.getElementById('apiUrlInput').value=saved;
-  document.getElementById('sName').value      = userName;
-  document.getElementById('sBrand').value     = userBrand;
-  document.getElementById('sSkills').value    = userSkills;
-  document.getElementById('sPortfolio').value = userPortfolio;
-  document.getElementById('sEmail').value     = userEmail;
-  var sel=document.getElementById('sSkillType');
-  if (sel) sel.value=currentSkill;
+function renderSettings(){
+  var saved=localStorage.getItem('ch_api')||'';if(saved)document.getElementById('apiUrlInput').value=saved;
+  document.getElementById('sName').value=userName;document.getElementById('sBrand').value=userBrand;
+  document.getElementById('sSkills').value=userSkills;document.getElementById('sPortfolio').value=userPortfolio;
+  document.getElementById('sEmail').value=userEmail;
+  var sel=document.getElementById('sSkillType');if(sel)sel.value=currentSkill;
 }
 
-// ── Init ───────────────────────────────────────────────────────────
-var savedApi = localStorage.getItem('ch_api');
-if (savedApi) {
-  API_BASE = savedApi;
-  fetch(savedApi+'/api/health')
-    .then(function(r){return r.json();})
-    .then(function(){
-      document.getElementById('connDot').style.background='#059669';
-      document.getElementById('connLabel').textContent='Backend connected';
-      fetchLeads().then(function(){updateBadges();renderDashboard();});
-    })
-    .catch(function(){
-      document.getElementById('connDot').style.background='#DC2626';
-      document.getElementById('connLabel').textContent='Backend offline';
-      API_BASE='';
-    });
-} else {
-  document.getElementById('connDot').style.background='#D97706';
-  document.getElementById('connLabel').textContent='Not connected';
-}
-renderDashboard();
-updateBadges();
+// Init
+var savedApi=localStorage.getItem('ch_api');
+if(savedApi){
+  API_BASE=savedApi;
+  fetch(savedApi+'/api/health').then(function(r){return r.json();}).then(function(){
+    document.getElementById('connDot').style.background='#059669';document.getElementById('connLabel').textContent='Backend connected';
+    fetchLeads().then(function(){updateBadges();renderDashboard();});
+  }).catch(function(){document.getElementById('connDot').style.background='#DC2626';document.getElementById('connLabel').textContent='Backend offline';API_BASE='';});
+}else{document.getElementById('connDot').style.background='#D97706';document.getElementById('connLabel').textContent='Not connected';}
+renderDashboard();updateBadges();
 </script>
 </body>
 </html>
